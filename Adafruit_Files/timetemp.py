@@ -14,7 +14,7 @@
 # http://www.adafruit.com/products/600 Printer starter pack
 
 from __future__ import print_function
-from Adafruit_Thermal import *
+from adafruit_thermal import *
 import time, urllib.request, json
 from PIL import Image, ImageDraw
 

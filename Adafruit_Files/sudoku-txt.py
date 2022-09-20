@@ -20,7 +20,7 @@
 
 from __future__ import print_function
 import sys, os, random, getopt, re
-from Adafruit_Thermal import *
+from adafruit_thermal import *
 
 printer = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)
 
