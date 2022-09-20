@@ -1,5 +1,5 @@
 from __future__ import print_function
-from adafruit_thermal import *
+import adafruit_thermal
 from datetime import date
 import calendar
 import urllib.request

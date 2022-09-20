@@ -18,7 +18,7 @@ from __future__ import print_function
 import RPi.GPIO as GPIO
 import subprocess, time, socket
 from PIL import Image
-from adafruit_thermal import *
+import adafruit_thermal
 from datetime import date
 import calendar
 

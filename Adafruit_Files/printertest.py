@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-from adafruit_thermal import *
+import adafruit_thermal
 
 printer = adafruit_thermal("/dev/serial0", 19200, timeout=5)
 
