@@ -14,10 +14,10 @@
 # MIT license, all text above must be included in any redistribution.
 #*************************************************************************
 
-# This is pretty much a 1:1 direct Python port of the Adafruit_Thermal
+# This is pretty much a 1:1 direct Python port of the adafruit_thermal
 # library for Arduino.  All methods use the same naming conventions as the
 # Arduino library, with only slight changes in parameter behavior where
-# needed.  This should simplify porting existing Adafruit_Thermal-based
+# needed.  This should simplify porting existing adafruit_thermal-based
 # printer projects to Raspberry Pi, BeagleBone, etc.  See printertest.py
 # for an example.
 #
@@ -37,7 +37,7 @@ import time
 import sys
 import math
 
-class Adafruit_Thermal(Serial):
+class adafruit_thermal(Serial):
 
 	resumeTime      =   0.0
 	byteTime        =   0.0
@@ -185,7 +185,7 @@ class Adafruit_Thermal(Serial):
 			for arg in args:
 				self.timeoutWait()
 				self.timeoutSet(len(args) * self.byteTime)
-				super(Adafruit_Thermal, self).write(bytes([arg]))
+				super(adafruit_thermal, self).write(bytes([arg]))
 
 	# Override write() method to keep track of paper feed.
 	def write(self, *data):
@@ -196,7 +196,7 @@ class Adafruit_Thermal(Serial):
 				continue
 			if c != 0x13:
 				self.timeoutWait()
-				super(Adafruit_Thermal, self).write(c)
+				super(adafruit_thermal, self).write(c)
 				d = self.byteTime
 				if ((c == '\n') or
 				    (self.column == self.maxColumn)):
@@ -344,16 +344,16 @@ class Adafruit_Thermal(Serial):
 				for i in range(n):
 					sys.stdout.write(text[i].encode('utf-8', 'ignore'))
 			else:
-				super(Adafruit_Thermal, self).write((chr(n)).encode('utf-8', 'ignore'))
+				super(adafruit_thermal, self).write((chr(n)).encode('utf-8', 'ignore'))
 				for i in range(n):
-					super(Adafruit_Thermal,
+					super(adafruit_thermal,
 					  self).write(text[i].encode('utf-8', 'ignore'))
 		else:
 			# Older firmware: write string + NUL
 			if self.writeToStdout:
 				sys.stdout.write(text.encode('utf-8', 'ignore'))
 			else:
-				super(Adafruit_Thermal, self).write(text.encode('utf-8', 'ignore'))
+				super(adafruit_thermal, self).write(text.encode('utf-8', 'ignore'))
 		self.prevByte = '\n'
 
 	# === Character commands ===
@@ -532,7 +532,7 @@ class Adafruit_Thermal(Serial):
 					if self.writeToStdout:
 						sys.stdout.write(bytes([bitmap[i]]))
 					else:
-						super(Adafruit_Thermal,
+						super(adafruit_thermal,
 						  self).write(bytes([bitmap[i]]))
 					i += 1
 				i += rowBytes - rowBytesClipped

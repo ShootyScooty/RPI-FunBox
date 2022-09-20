@@ -5,7 +5,7 @@ import calendar
 import urllib.request
 import json
 
-printer = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)
+printer = adafruit_thermal("/dev/serial0", 19200, timeout=5)
 def getLink(dailyOrHourly):
     latitude = "38.8894" #limit to four decimal digits
     longitude = "-77.0352" #limit to four decimal digits

@@ -6,7 +6,7 @@
 # See forecast.py for a different weather example that's all text-based.
 # Written by Adafruit Industries.  MIT license.
 #
-# Required software includes Adafruit_Thermal, Python Imaging and PySerial
+# Required software includes adafruit_thermal, Python Imaging and PySerial
 # libraries. Other libraries used are part of stock Python install.
 #
 # Resources:
@@ -164,6 +164,6 @@ if windUnits == 'kph': img.paste(Kph, (x, y))
 else:                  img.paste(Mph, (x, y))
 
 # Open connection to printer and print image
-printer = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)
+printer = adafruit_thermal("/dev/serial0", 19200, timeout=5)
 printer.printImage(img, True)
 printer.feed(3)

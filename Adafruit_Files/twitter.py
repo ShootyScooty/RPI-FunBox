@@ -8,7 +8,7 @@
 # Required hardware includes an Internet-connected system with Python
 # (such as Raspberry Pi) and an Adafruit Mini Thermal Receipt printer
 # and all related power supplies and cabling.
-# Required software includes Adafruit_Thermal and PySerial libraries.
+# Required software includes adafruit_thermal and PySerial libraries.
 #
 # Resources:
 # http://www.adafruit.com/products/597 Mini Thermal Receipt Printer
@@ -47,7 +47,7 @@ queryString = 'from:Adafruit'
 
 # Other globals.  You probably won't need to change these. -----------------
 
-printer   = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)
+printer   = adafruit_thermal("/dev/serial0", 19200, timeout=5)
 host      = 'api.twitter.com'
 authUrl   = '/oauth2/token'
 searchUrl = '/1.1/search/tweets.json?'

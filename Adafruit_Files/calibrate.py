@@ -1,6 +1,6 @@
 #!/usr/bin/python
 #
-# Thermal calibration utility for Adafruit_Thermal Python library.
+# Thermal calibration utility for adafruit_thermal Python library.
 # Run this utility before using the printer for the first time, any
 # time a different power supply is used, or when using paper from a
 # different source.
@@ -13,7 +13,7 @@
 # lack of power.
 #
 # Whatever the outcome, take the last number printed BEFORE any
-# distorted bar and enter in in Adafruit_Thermal.py as defaultHeatTime
+# distorted bar and enter in in adafruit_thermal.py as defaultHeatTime
 # (around line 53).
 #
 # You may need to pull on the paper as it reaches the jamming point,
@@ -23,7 +23,7 @@
 from __future__ import print_function
 from adafruit_thermal import *
 
-printer = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)
+printer = adafruit_thermal("/dev/serial0", 19200, timeout=5)
 
 for i in range(0,256,15):
 	printer.begin(i)

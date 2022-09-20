@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Python3 script to print the current date and time, using
-#   the Adafruit_Thermal library, in ISO 8601 format.
+#   the adafruit_thermal library, in ISO 8601 format.
 # https://www.iso.org/iso-8601-date-and-time-format.html
 
 import time
@@ -13,7 +13,7 @@ i_feed = 3
 f_pause = 1.0
 
 # Define the printer port, speed, and timeout
-printer = Adafruit_Thermal("/dev/ttyS0", 19200, timeout=5)
+printer = adafruit_thermal("/dev/ttyS0", 19200, timeout=5)
 
 # Build the date stamp in the format YYYY-MM-DD ex: "2021-12-25"
 datestamp = time.strftime("%Y-%m-%d", time.gmtime())
