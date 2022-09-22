@@ -22,7 +22,7 @@
 
 from __future__ import print_function
 import sys, os, random, getopt, re
-from Adafruit_Thermal import *
+import Adafruit_Thermal
 from PIL import Image
 
 printer = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)

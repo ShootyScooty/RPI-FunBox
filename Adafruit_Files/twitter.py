@@ -29,7 +29,7 @@
 from __future__ import print_function
 import base64, HTMLParser, httplib, json, sys, urllib, zlib
 from unidecode import unidecode
-from Adafruit_Thermal import *
+import Adafruit_Thermal
 
 
 # Configurable globals.  Edit to your needs. -------------------------------

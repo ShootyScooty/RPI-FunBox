@@ -5,7 +5,7 @@
 # https://www.iso.org/iso-8601-date-and-time-format.html
 
 import time
-from Adafruit_Thermal import *
+import Adafruit_Thermal
 
 # Lines of margin (integer)
 i_feed = 3
