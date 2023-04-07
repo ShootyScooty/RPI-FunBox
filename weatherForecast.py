@@ -19,7 +19,7 @@ weather = response.json()
 
 if weather["cod"] != "404":
 
-	printer.print("Today is " + current_time.strftime() + ", " + current_time.month() + " " + current_time.day() + ", " + current_time.year())
+	printer.print("Today is " + current_time.strftime('%A') + ", " + current_time.month() + " " + current_time.day() + ", " + current_time.year())
 	printer.feed(5)
 	printer.print("Today in " + weather['sys'].name + " there will be a high of " + weather['main'].temp_max + " and a low of " + weather['main'].temp_min + ", but currently it's " + weather['main'].temp + " but feels like " + weather['main'].feels_like)
 	printer.feed(5)
