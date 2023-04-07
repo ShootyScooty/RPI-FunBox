@@ -1,68 +1,31 @@
 # import required modules
 import requests, json
+import serial
+import adafruit_thermal_printer
+import datetime
 
-# Enter your API key here
+uart = serial.Serial("/dev/serial0", baudrate=19200, timeout=3000)
+ThermalPrinter = adafruit_thermal_printer.get_printer_class(2.16)
+printer = ThermalPrinter(uart)
+
+current_time = datetime.now()
+
 api_key = "Your_API_Key"
-
-# base_url variable to store url
 base_url = "http://api.openweathermap.org/data/2.5/weather?"
-
-# Give city name
-city_name = input("Enter city name : ")
-
-# complete_url variable to store
-# complete url address
-complete_url = base_url + "appid=" + api_key + "&q=" + city_name
-
-# get method of requests module
-# return response object
+complete_url = base_url + "appid=" + api_key + "&units=imperial&q=14611" 
 response = requests.get(complete_url)
 
-# json method of response object
-# convert json format data into
-# python format data
-x = response.json()
+weather = response.json()
 
-# Now x contains list of nested dictionaries
-# Check the value of "cod" key is equal to
-# "404", means city is found otherwise,
-# city is not found
-if x["cod"] != "404":
+if weather["cod"] != "404":
 
-	# store the value of "main"
-	# key in variable y
-	y = x["main"]
-
-	# store the value corresponding
-	# to the "temp" key of y
-	current_temperature = y["temp"]
-
-	# store the value corresponding
-	# to the "pressure" key of y
-	current_pressure = y["pressure"]
-
-	# store the value corresponding
-	# to the "humidity" key of y
-	current_humidity = y["humidity"]
-
-	# store the value of "weather"
-	# key in variable z
-	z = x["weather"]
-
-	# store the value corresponding
-	# to the "description" key at
-	# the 0th index of z
-	weather_description = z[0]["description"]
-
-	# print following values
-	print(" Temperature (in kelvin unit) = " +
-					str(current_temperature) +
-		"\n atmospheric pressure (in hPa unit) = " +
-					str(current_pressure) +
-		"\n humidity (in percentage) = " +
-					str(current_humidity) +
-		"\n description = " +
-					str(weather_description))
+	printer.print("Today is " + current_time.weekday + ", " + current_time.month + " " + current_time.day + ", " + current_time.year)
+	printer.feed(5)
+	printer.print("Today in " + weather['sys'].name + " there will be a high of " + weather['main'].temp_max + " and a low of " + weather['main'].temp_min + ", but currently it's " + weather['main'].temp + " but feels like " + weather['main'].feels_like)
+	printer.feed(5)
+	printer.print("You can expect " + weather['weather'][0].main + ", specifically " + weather['weather'][0].description)
+	printer.feed(10)
 
 else:
-	print(" City Not Found ")
+	printer.print(" City Not Found ")
+	printer.feed(10)
