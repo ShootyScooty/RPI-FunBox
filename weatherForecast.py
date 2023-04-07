@@ -3,7 +3,7 @@ import requests, json
 import serial
 import adafruit_thermal_printer
 import datetime
-from secrets import API_KEY
+from keys import *
 
 uart = serial.Serial("/dev/serial0", baudrate=19200, timeout=3000)
 ThermalPrinter = adafruit_thermal_printer.get_printer_class(2.16)
