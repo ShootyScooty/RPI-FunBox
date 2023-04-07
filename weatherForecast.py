@@ -9,7 +9,7 @@ uart = serial.Serial("/dev/serial0", baudrate=19200, timeout=3000)
 ThermalPrinter = adafruit_thermal_printer.get_printer_class(2.16)
 printer = ThermalPrinter(uart)
 
-current_time = datetime.now()
+current_time = datetime.datetime.now()
 
 base_url = "http://api.openweathermap.org/data/2.5/weather?"
 complete_url = base_url + "appid=" + API_KEY + "&units=imperial&q=14611" 
