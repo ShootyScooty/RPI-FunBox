@@ -12,7 +12,7 @@ printer = ThermalPrinter(uart)
 current_time = datetime.datetime.now()
 
 base_url = "http://api.openweathermap.org/data/2.5/weather?"
-complete_url = base_url, "appid=", API_KEY, "&units=imperial&q=14611" 
+complete_url = base_url + "appid=" + API_KEY + "&units=imperial&q=14611" 
 response = requests.get(complete_url)
 
 weather = response.json()
