@@ -19,7 +19,7 @@ weather = response.json()
 
 if weather["cod"] != "404":
 
-	line1 = "Today is " + current_time.strftime('%A') + " + " + current_time.month + " " + current_time.day + " + " + current_time.year
+	line1 = "Today is " + current_time.strftime('%A') + " + " + str(current_time.month) + " " + str(current_time.day) + " + " + str(current_time.year)
 	line2 = "Today in " + weather['name'] + " there will be a high of " + weather['main']['temp_max'] + " and a low of " + weather['main']['temp_min'] + " + but currently it's " + weather['main']['temp'] + " but feels like " + weather['main']['feels_like']
 	line3 = "You can expect " + weather['weather'][0]['main'] + " + specifically " + weather['weather'][0]['description']
 
