@@ -5,7 +5,7 @@ import adafruit_thermal_printer
 import datetime
 from keys import *
 
-uart = serial.Serial("/dev/serial0", baudrate=19200, timeout=3000)
+uart = serial.Serial("/dev/serial0", baudrate=19200, timeout=5000)
 ThermalPrinter = adafruit_thermal_printer.get_printer_class(2.16)
 printer = ThermalPrinter(uart)
 
