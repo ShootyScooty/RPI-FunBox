@@ -19,6 +19,18 @@ weather = response.json()
 
 if weather["cod"] != "404":
 
+	line1 = " _ _ _         _   _           "
+	line2 = "| | | |___ ___| |_| |_ ___ ___ "
+	line3 = "| | | | -_| .'|  _|   | -_|  _|"
+	line4 = "|_____|___|__,|_| |_|_|___|_| "
+
+	printer.print(line1)
+	printer.print(line2)
+	printer.print(line3)
+	printer.print(line4)
+
+	printer.feed(2)
+
 	printer.print("Today is " + current_time.strftime('%A') + ", " + str(current_time.month) + "/" + str(current_time.day) + "/" + str(current_time.year))
 	printer.feed(1)
 	printer.print("Today in " + weather['name'] + "\nthere will be a high of " + str(weather['main']['temp_max']) + "\nand a low of " + str(weather['main']['temp_min']) + "\nbut currently it's " + str(weather['main']['temp']) + "\nbut feels like " + str(weather['main']['feels_like']))
