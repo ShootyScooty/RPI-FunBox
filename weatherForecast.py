@@ -21,9 +21,9 @@ if weather["cod"] != "404":
 
 	printer.print("Today is " + current_time.strftime('%A') + ", " + str(current_time.month) + "/" + str(current_time.day) + "/" + str(current_time.year))
 	printer.feed(1)
-	printer.print("Today in " + weather['name'] + " there will be a high of " + str(weather['main']['temp_max']) + " and a low of " + str(weather['main']['temp_min']) + " + but currently it's " + str(weather['main']['temp']) + " but feels like " + str(weather['main']['feels_like']))
+	printer.print("Today in " + weather['name'] + "\nthere will be a high of " + str(weather['main']['temp_max']) + "\nand a low of " + str(weather['main']['temp_min']) + "\nbut currently it's " + str(weather['main']['temp']) + "\nbut feels like " + str(weather['main']['feels_like']))
 	printer.feed(1)
-	printer.print("You can expect " + weather['weather'][0]['main'] + " + specifically " + weather['weather'][0]['description'])
+	printer.print("You can expect " + weather['weather'][0]['main'] + ",\nspecifically " + weather['weather'][0]['description'])
 	printer.feed(5)
 
 else:
