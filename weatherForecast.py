@@ -19,15 +19,18 @@ weather = response.json()
 
 if weather["cod"] != "404":
 
+	line0 = "###############################"
 	line1 = " _ _ _         _   _           "
 	line2 = "| | | |___ ___| |_| |_ ___ ___ "
 	line3 = "| | | | -_| .'|  _|   | -_|  _|"
 	line4 = "|_____|___|__,|_| |_|_|___|_| "
 
+	printer.print(line0)
 	printer.print(line1)
 	printer.print(line2)
 	printer.print(line3)
 	printer.print(line4)
+	printer.print(line0)
 
 	printer.feed(2)
 
