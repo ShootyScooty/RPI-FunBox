@@ -6,11 +6,22 @@ from weatherForecast import *
 GPIO.setmode(GPIO.BCM)
 
 # Pin 23: Blue Button
-GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)  
+blue = 23
+green = 24
+yellow = 25
+red = 12
+clear = 16
+
+GPIO.setup(blue, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(green, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(yellow, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(red, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(clear, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 try:  
-    GPIO.wait_for_edge(23, GPIO.FALLING)  
-    weatherPrint()
+    while True:
+        GPIO.wait_for_edge(blue, GPIO.FALLING)  
+        weatherPrint()
 
 except KeyboardInterrupt:  
     GPIO.cleanup()       # clean up GPIO on CTRL+C exit  
