@@ -1,10 +1,10 @@
 import paramiko
 import json
-from datetime import datetime, timedelta
+from datetime import datetime
 
 def convert_timestamp(timestamp):
     if timestamp:
-        return datetime.utcfromtimestamp(timestamp / 1e6).strftime("%Y-%m-%d %H:%M:%S UTC")
+        return datetime.utcfromtimestamp(int(timestamp) / 1e6).strftime("%Y-%m-%d %H:%M:%S UTC")
     return "N/A"
 
 def get_service_status(host, username, service_name):
