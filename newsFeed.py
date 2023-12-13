@@ -13,6 +13,8 @@ def printNews():
     complete_url = base_url + "apiKey=" + NEWS_API_KEY
     response = requests.get(complete_url)
 
+    print (complete_url)
+
     news = response.json()
 
     if news['status'] != "ok":
