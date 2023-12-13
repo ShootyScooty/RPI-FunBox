@@ -2,6 +2,7 @@ import RPi.GPIO as GPIO
 from weatherForecast import *
 from emergencyFeed import *
 from healthCheck import *
+from newsFeed import *
 from printerTest import *
 GPIO.setwarnings(False)
 
@@ -39,7 +40,8 @@ def pushGreen(green):
 
 def pushYellow(yellow):
     if GPIO.input(yellow) == GPIO.HIGH:
-        print("Yellow Pressed")
+        print("Running News")
+        printNews()
 
 def pushRed(red):
     if GPIO.input(red) == GPIO.HIGH:

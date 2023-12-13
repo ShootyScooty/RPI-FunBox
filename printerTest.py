@@ -12,4 +12,4 @@ printer = ThermalPrinter(uart)
 def printTest():
     printer.feed(2)
     printer.print("TEST")
-    printer.feed(2)
+    printer.feed(4)

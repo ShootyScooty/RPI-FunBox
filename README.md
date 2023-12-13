@@ -12,6 +12,7 @@ https://openweathermap.org/forecast5
 https://www.monroecounty.gov/incidents911.rss
 https://clearcutradio.app/api/v1/calls?system=us-ny-monroe&talkgroup=1077
 https://clearcutradio.app/api/v1/calls?system=us-ny-monroe&talkgroup=1654
+https://newsapi.org/docs
 
 ## For Raspberry Pi
 

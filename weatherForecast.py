@@ -14,16 +14,10 @@ def weatherPrint():
 	current_time = datetime.datetime.now()
 
 	base_url = "http://api.openweathermap.org/data/2.5/weather?lat=43.144&lon=-77.6406&"
-	complete_url = base_url + "appid=" + API_KEY + "&units=imperial"
+	complete_url = base_url + "appid=" + WEATHER_API_KEY + "&units=imperial"
 	response = requests.get(complete_url)
 
 	weather = response.json()
-
-	base_url = "http://api.openweathermap.org/data/2.5/forecast?lat=43.144&lon=-77.6406&"
-	complete_url = base_url + "appid=" + API_KEY + "&units=imperial"
-	response = requests.get(complete_url)
-
-	future = response.json()
 
 	if weather['cod'] != "404":
 
@@ -54,6 +48,12 @@ def weatherPrint():
 		
 		printer.feed(2)
 
+		# base_url = "http://api.openweathermap.org/data/2.5/forecast?lat=43.144&lon=-77.6406&"
+		# complete_url = base_url + "appid=" + API_KEY + "&units=imperial"
+		# response = requests.get(complete_url)
+
+		# future = response.json()
+
 		# if future['cod'] != "404":
 
 		# 	future = future['list']
@@ -70,8 +70,8 @@ def weatherPrint():
 		# 	printer.print("###############################")
 
 		printer.print("###############################")
-		printer.feed(2)
+		printer.feed(4)
 
 	else:
 		printer.print(" City Not Found ")
-		printer.feed(10)
+		printer.feed(4)

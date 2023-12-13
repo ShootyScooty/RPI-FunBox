@@ -120,4 +120,4 @@ def healthPrint():
     printer.print(tech)
     printer.feed(1)
     printer.print("###############################")
-    printer.feed(2)
+    printer.feed(4)
