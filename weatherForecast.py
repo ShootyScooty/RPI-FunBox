@@ -10,7 +10,6 @@ def weatherPrint():
 	uart = serial.Serial("/dev/serial0", baudrate=19200, timeout=3000)
 	ThermalPrinter = adafruit_thermal_printer.get_printer_class(2.16)
 	printer = ThermalPrinter(uart)
-	printer.setTimes(40000, 2500)
 
 	current_time = datetime.datetime.now()
 
