@@ -1,10 +1,15 @@
 import paramiko
 import json
+import pytz
 from datetime import datetime
 
 def convert_timestamp_since(timestamp):
     if timestamp:
-        return datetime.utcfromtimestamp(int(timestamp) / 1e6).strftime("%Y-%m-%d %H:%M:%S UTC")
+        est = pytz.timezone('US/Eastern')
+        utc_time = datetime.utcfromtimestamp(int(timestamp) / 1e6).replace(tzinfo=pytz.utc)
+        est_time = utc_time.astimezone(est)
+        
+        return est_time.strftime("%Y-%m-%d %H:%M:%S EST")
     return "N/A"
 
 def convert_timestamp_uptime(timestamp):
