@@ -25,12 +25,6 @@ GPIO.setup(yellow, GPIO.OUT)
 GPIO.setup(red, GPIO.OUT)
 GPIO.setup(white, GPIO.OUT)
 
-GPIO.add_event_detect(blue, GPIO.BOTH, callback=pushBlue,bouncetime=800)
-GPIO.add_event_detect(green, GPIO.BOTH, callback=pushGreen, bouncetime=800)
-GPIO.add_event_detect(yellow, GPIO.BOTH, callback=pushYellow, bouncetime=800)
-GPIO.add_event_detect(red, GPIO.BOTH, callback=pushRed, bouncetime=800)
-GPIO.add_event_detect(white, GPIO.BOTH, callback=pushWhite, bouncetime=800)
-
 def pushBlue():
     print("Blue Pressed")
 
@@ -45,6 +39,12 @@ def pushRed():
 
 def pushWhite():
     print("White Pressed")
+
+GPIO.add_event_detect(blue, GPIO.BOTH, callback=pushBlue,bouncetime=800)
+GPIO.add_event_detect(green, GPIO.BOTH, callback=pushGreen, bouncetime=800)
+GPIO.add_event_detect(yellow, GPIO.BOTH, callback=pushYellow, bouncetime=800)
+GPIO.add_event_detect(red, GPIO.BOTH, callback=pushRed, bouncetime=800)
+GPIO.add_event_detect(white, GPIO.BOTH, callback=pushWhite, bouncetime=800)
 
 while True:
     print("Polling Started")
