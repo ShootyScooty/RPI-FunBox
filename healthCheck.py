@@ -5,6 +5,7 @@ import requests, json
 import serial
 import adafruit_thermal_printer
 import datetime
+import urllib.request
 from datetime import datetime
 from printerTools import *
 
@@ -48,7 +49,8 @@ def get_service_status(host, username, service_name):
             since = convert_timestamp_since(int(entry.get("__REALTIME_TIMESTAMP")))
             uptime = convert_timestamp_uptime(int(entry.get("__MONOTONIC_TIMESTAMP")))
 
-            out = "Service: " + service_name + "\nStatus: " + status + "\nSince: " + since + "\nUptime: " + uptime
+            # out = "Service: " + service_name + "\nStatus: " + status + "\nSince: " + since + "\nUptime: " + uptime
+            out = "Service: " + service_name + "\nSince: " + since + "\nUptime: " + uptime
 
             # Print the results
             # print(f"Service: {service_name}")
@@ -83,6 +85,9 @@ def healthPrint():
     mcEmergency = get_service_status(mchost, mcusername, mcservice_name)
     trunkRecorder = get_service_status(trhost, trusername, trservice_name)
 
+    com = urllib.request.urlopen("https://aidanlemay.com/").getcode()
+    tech = urllib.request.urlopen("https://k5doc.tech/").getcode()
+
     printer.print("###############################")
     printer.print(center_text("  _____ _        _       "))
     printer.print(center_text(" / ____| |      | |      "))
@@ -97,5 +102,12 @@ def healthPrint():
     printer.print(mcEmergency)
     printer.feed(1)
     printer.print(trunkRecorder)
+    printer.feed(1)
+    printer.print("###############################")
+    printer.feed(1)
+    printer.print("https://aidanlemay.com/ responded with a code of " + str(com))
+    printer.feed(1)
+    printer.print("https://k5doc.tech/ responded with a code of " + str(tech))
+    printer.feed(1)
     printer.print("###############################")
     printer.feed(2)
