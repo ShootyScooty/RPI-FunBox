@@ -22,3 +22,12 @@ https://learn.adafruit.com/mini-thermal-receipt-printer/circuitpython
 `python3 -m venv .venv`
 `source .venv/bin/activate`
 `python3 -m pip install adafruit-circuitpython-thermal-printer`
+
+For all future instructions, prepend `install` with either `sudo pip3` or `python3 -m pip` depending on your above choosings
+
+
+`install requests`
+
+Get an API key from here - https://openweathermap.org/appid
+
+Create key.py in the root project directory with the following: `API_KEY = "<Your API Key from openweathermap>"`
