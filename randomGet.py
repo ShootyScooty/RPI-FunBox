@@ -10,12 +10,12 @@ def printRandom():
     printer = ThermalPrinter(uart)
 
     printer.print("###############################")
-    printer.print(center_text(" _____                 _                 "))
-    printer.print(center_text("|  __ \               | |                "))
-    printer.print(center_text("| |__) |__ _ _ __   __| | ___  _ __ ___  "))
-    printer.print(center_text("|  _  // _` | '_ \ / _` |/ _ \| '_ ` _ \ "))
-    printer.print(center_text("| | \ \ (_| | | | | (_| | (_) | | | | | |"))
-    printer.print(center_text("|_|  \_\__,_|_| |_|\__,_|\___/|_| |_| |_|"))
+    printer.print(center_text(" ______             "))
+    printer.print(center_text("|  ____|            "))
+    printer.print(center_text("| |__  _   _  _ __  "))
+    printer.print(center_text("|  __|| | | || '_ \ "))
+    printer.print(center_text("| |   | |_| || | | |"))
+    printer.print(center_text("|_|    \__,_||_| |_|"))
     printer.print("###############################")
 
     printer.feed(2)
@@ -25,7 +25,7 @@ def printRandom():
     response = requests.get(base_url, headers={'X-Api-Key':NINJA_API_KEY})
     quotes = response.json()
 
-    if response.ok(): 
+    if response.ok: 
         printer.print("From " + quotes['author'])
         printer.feed(1)
         printer.print(quotes['quote'])
@@ -43,7 +43,7 @@ def printRandom():
     response = requests.get(base_url, headers={'X-Api-Key': NINJA_API_KEY})
     jokes = response.json()
 
-    if response.ok():
+    if response.ok:
         printer.print(jokes['joke'])
         printer.feed(2)
 
@@ -59,7 +59,7 @@ def printRandom():
     response = requests.get(base_url, headers={'X-Api-Key': NINJA_API_KEY})
     dadjokes = response.json()
 
-    if response.ok():
+    if response.ok:
         printer.print(dadjokes['joke'])
         printer.feed(2)
 
@@ -75,7 +75,7 @@ def printRandom():
     response = requests.get(base_url, headers={'X-Api-Key': NINJA_API_KEY})
     facts = response.json()
 
-    if response.ok():
+    if response.ok:
         printer.print(facts['fact'])
         printer.feed(2)
 
@@ -91,7 +91,7 @@ def printRandom():
     response = requests.get(base_url, headers={'X-Api-Key': NINJA_API_KEY})
     riddle = response.json()
 
-    if response.ok():
+    if response.ok:
         printer.print(riddle['title'])
         printer.feed(2)
 
@@ -113,7 +113,7 @@ def printRandom():
     response = requests.get(base_url, headers={'X-Api-Key': NINJA_API_KEY})
     trivia = response.json()
 
-    if response.ok():
+    if response.ok:
         printer.print("The category is " + trivia['category'])
         printer.feed(2)
 
