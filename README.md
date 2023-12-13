@@ -2,6 +2,7 @@
 
 https://github.com/adafruit/Python-Thermal-Printer
 https://learn.adafruit.com/mini-thermal-receipt-printer/circuitpython
+https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/
 
 ## For Raspberry Pi
 
