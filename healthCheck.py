@@ -2,9 +2,19 @@ import paramiko
 import json
 from datetime import datetime
 
-def convert_timestamp(timestamp):
+def convert_timestamp_since(timestamp):
     if timestamp:
         return datetime.utcfromtimestamp(int(timestamp) / 1e6).strftime("%Y-%m-%d %H:%M:%S UTC")
+    return "N/A"
+
+def convert_timestamp_uptime(timestamp):
+    if timestamp:
+        seconds = int(timestamp) / 1e6
+        days, remainder = divmod(seconds, 86400)
+        hours, remainder = divmod(remainder, 3600)
+        minutes, seconds = divmod(remainder, 60)
+        
+        return f"{int(days)} days, {int(hours)} hours, {int(minutes)} minutes, {int(seconds)} seconds"
     return "N/A"
 
 def get_service_status(host, username, service_name):
@@ -25,8 +35,8 @@ def get_service_status(host, username, service_name):
         if entries:
             entry = entries[0]
             status = entry.get("MESSAGE")
-            since = convert_timestamp(int(entry.get("__REALTIME_TIMESTAMP")))
-            uptime = convert_timestamp(int(entry.get("__MONOTONIC_TIMESTAMP")))
+            since = convert_timestamp_since(int(entry.get("__REALTIME_TIMESTAMP")))
+            uptime = convert_timestamp_uptime(int(entry.get("__MONOTONIC_TIMESTAMP")))
 
             # Print the results
             print(f"Service: {service_name}")
