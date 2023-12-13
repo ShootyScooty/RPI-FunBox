@@ -19,11 +19,11 @@ yellow = 22
 red = 32
 white = 36
 
-GPIO.setup(blue, GPIO.OUT)
-GPIO.setup(green, GPIO.OUT)
-GPIO.setup(yellow, GPIO.OUT)
-GPIO.setup(red, GPIO.OUT)
-GPIO.setup(white, GPIO.OUT)
+GPIO.setup(blue, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(green, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(yellow, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(red, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(white, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
 
 def pushBlue():
     print("Blue Pressed")
@@ -40,7 +40,7 @@ def pushRed():
 def pushWhite():
     print("White Pressed")
 
-GPIO.add_event_detect(blue, GPIO.BOTH, callback=pushBlue,bouncetime=800)
+GPIO.add_event_detect(blue, GPIO.BOTH, callback=pushBlue, bouncetime=800)
 GPIO.add_event_detect(green, GPIO.BOTH, callback=pushGreen, bouncetime=800)
 GPIO.add_event_detect(yellow, GPIO.BOTH, callback=pushYellow, bouncetime=800)
 GPIO.add_event_detect(red, GPIO.BOTH, callback=pushRed, bouncetime=800)
