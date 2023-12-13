@@ -27,30 +27,27 @@ GPIO.setup(yellow, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(red, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(white, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
-while True: # Run forever
-    if GPIO.input(blue) == GPIO.HIGH:
-        print("Button was pushed!")
+def pushBlue(blue):
+    print("Blue Pressed")
 
-# GPIO.add_event_detect(blue, GPIO.BOTH, callback=pushBlue, bouncetime=800)
-# GPIO.add_event_detect(green, GPIO.BOTH, callback=pushGreen, bouncetime=800)
-# GPIO.add_event_detect(yellow, GPIO.BOTH, callback=pushYellow, bouncetime=800)
-# GPIO.add_event_detect(red, GPIO.BOTH, callback=pushRed, bouncetime=800)
-# GPIO.add_event_detect(white, GPIO.BOTH, callback=pushWhite, bouncetime=800)
+def pushGreen(green):
+    print("Green Pressed")
 
-# def pushBlue():
-#     print("Blue Pressed")
+def pushYellow(yellow):
+    print("Yellow Pressed")
 
-# def pushGreen():
-#     print("Green Pressed")
+def pushRed(red):
+    print("Red Pressed")
 
-# def pushYellow():
-#     print("Yellow Pressed")
+def pushWhite(white):
+    print("White Pressed")
 
-# def pushRed():
-#     print("Red Pressed")
+GPIO.add_event_detect(blue, GPIO.RISING, callback=pushBlue, bouncetime=800)
+GPIO.add_event_detect(green, GPIO.RISING, callback=pushGreen, bouncetime=800)
+GPIO.add_event_detect(yellow, GPIO.RISING, callback=pushYellow, bouncetime=800)
+GPIO.add_event_detect(red, GPIO.RISING, callback=pushRed, bouncetime=800)
+GPIO.add_event_detect(white, GPIO.RISING, callback=pushWhite, bouncetime=800)
 
-# def pushWhite():
-#     print("White Pressed")
+message = input("Press Enter to Quit\n\n")
 
-# while True:
-#     print("Polling Started")
+GPIO.cleanup()
