@@ -17,6 +17,8 @@ def printNews():
 
     news = response.json()
 
+    print(news['status'])
+
     if news['status'] != "ok":
     
         printer.print("###############################")
