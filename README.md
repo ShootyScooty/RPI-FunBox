@@ -38,6 +38,7 @@ For all future instructions, prepend `install` with either `sudo pip3` or `pytho
 `install requests_html`
 `install paramiko`
 `install cysystemd`
+`install pytz`
 
 Get an API key from here - https://openweathermap.org/appid
 

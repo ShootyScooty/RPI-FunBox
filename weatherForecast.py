@@ -34,10 +34,12 @@ def weatherPrint():
 		feel = (weather['main']['feels_like'])
 
 		printer.print("###############################")
+		printer.JUSTIFY_CENTER
 		printer.print(" _ _ _         _   _           ")
 		printer.print("| | | |___ ___| |_| |_ ___ ___ ")
 		printer.print("| | | | -_| .'|  _|   | -_|  _|")
 		printer.print("|_____|___|__,|_| |_|_|___|_| ")
+		printer.JUSTIFY_LEFT
 		printer.print("###############################")
 
 		printer.feed(2)
@@ -70,6 +72,7 @@ def weatherPrint():
 		# 	printer.print("###############################")
 
 		printer.print("###############################")
+		printer.feed(2)
 
 	else:
 		printer.print(" City Not Found ")

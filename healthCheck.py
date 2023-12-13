@@ -32,7 +32,7 @@ def get_service_status(host, username, service_name):
 
         # Run journalctl command to get service status
         command = f"journalctl -u {service_name} -n 1 --output=json"
-        stdin, stdout, stderr = ssh.exec_command(command)
+        stdout = ssh.exec_command(command)
 
         # Parse the JSON output
         output = stdout.read().decode("utf-8")
@@ -43,24 +43,21 @@ def get_service_status(host, username, service_name):
             since = convert_timestamp_since(int(entry.get("__REALTIME_TIMESTAMP")))
             uptime = convert_timestamp_uptime(int(entry.get("__MONOTONIC_TIMESTAMP")))
 
+            out = "Service: " + service_name + "\nStatus: " + status + "\nSince: " + since + "\nUptime: " + uptime
+
             # Print the results
-            print(f"Service: {service_name}")
-            print(f"Status: {status}")
-            print(f"Since: {since}")
-            print(f"Uptime: {uptime}")
+            # print(f"Service: {service_name}")
+            # print(f"Status: {status}")
+            # print(f"Since: {since}")
+            # print(f"Uptime: {uptime}")
+
+            return out
         else:
-            print(f"No journal entry found for service {service_name}")
+            return "Error - Service Not Found"
 
     except Exception as e:
-        print(f"Error: {e}")
+        return "Error - " + e
     finally:
         # Close the SSH connection
         if ssh:
             ssh.close()
-
-if __name__ == "__main__":
-    host = "192.168.1.31"
-    username = "aidan"
-    service_name = "MC-Emergency-Bot.service"
-
-    get_service_status(host, username, service_name)

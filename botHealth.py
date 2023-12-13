@@ -1,38 +1,40 @@
-import subprocess, re
+import requests, json
+import serial
+import adafruit_thermal_printer
+import datetime
+from healthCheck import *
 
-def read_status(service):
-    p =  subprocess.Popen(["systemctl", "status",  service], stdout=subprocess.PIPE)
-    (output, err) = p.communicate()
-    output = output.decode('utf-8')
+def statusPrint():
+    uart = serial.Serial("/dev/serial0", baudrate=19200, timeout=3000)
+    ThermalPrinter = adafruit_thermal_printer.get_printer_class(2.16)
+    printer = ThermalPrinter(uart)
 
-    service_regx = r"Loaded:.*\/(.*service);"
-    status_regx= r"Active:(.*) since (.*);(.*)"
-    service_status = {}
-    for line in output.splitlines():
-        service_search = re.search(service_regx, line)
-        status_search = re.search(status_regx, line)
+    mchost = "192.168.1.31"
+    mcusername = "aidan"
+    mcservice_name = "MC-Emergency-Bot.service"
 
-        if service_search:
-            service_status['service'] = service_search.group(1)
-            #print("service:", service)
+    trhost = "192.168.1.61"
+    trusername = "aidan"
+    trservice_name = "trunk-recorder"
 
-        elif status_search:
-            service_status['status'] = status_search.group(1).strip()
-            #print("status:", status.strip())
-            service_status['since'] = status_search.group(2).strip()
-            #print("since:", since.strip())
-            service_status['uptime'] = status_search.group(3).strip()
-            #print("uptime:", uptime.strip())
+    mcEmergency = get_service_status(mchost, mcusername, mcservice_name)
+    trunkRecorder = get_service_status(trhost, trusername, trservice_name)
 
-    return service_status
+    printer.print("###############################")
+    printer.JUSTIFY_CENTER
+    printer.print("  _____ _        _       ")
+    printer.print(" / ____| |      | |      ")
+    printer.print("| (___ | |_ __ _| |_ ___ ")
+    printer.print(" \___ \| __/ _` | __/ __|")
+    printer.print(" ____) | || (_| | |_\__ \\")
+    printer.print("|_____/ \__\__,_|\__|___/")
+    printer.JUSTIFY_LEFT
+    printer.print("###############################")
 
-def main():
-    service = 'MC-Emergency-Bot'
-    reponse = read_status(service)
+    printer.feed(2)
 
-    for key in reponse:
-        print('{}:{}'.format(key, reponse[key]))
-
-
-if __name__ == '__main__':
-    main()
+    printer.print(mcEmergency)
+    printer.feed(1)
+    printer.print(trunkRecorder)
+    printer.print("###############################")
+    printer.feed(2)
