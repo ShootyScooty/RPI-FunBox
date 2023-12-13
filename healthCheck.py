@@ -85,8 +85,18 @@ def healthPrint():
     mcEmergency = get_service_status(mchost, mcusername, mcservice_name)
     trunkRecorder = get_service_status(trhost, trusername, trservice_name)
 
-    com = urllib.request.urlopen("https://aidanlemay.com/").getcode()
-    tech = urllib.request.urlopen("https://k5doc.tech/").getcode()
+    com
+    tech
+
+    try:
+        com = "https://aidanlemay.com/ responded with a code of " + str(urllib.request.urlopen("https://aidanlemay.com/").getcode())
+    except Exception:
+        com = "Unable to reach https://aidanlemay.com/"
+
+    try:
+        tech = "https://k5doc.tech/ responded with a code of " + str(urllib.request.urlopen("https://k5doc.tech/").getcode())
+    except Exception:
+        tech = "Unable to reach https://k5doc.tech/"
 
     printer.print("###############################")
     printer.print(center_text("  _____ _        _       "))
@@ -105,9 +115,9 @@ def healthPrint():
     printer.feed(1)
     printer.print("###############################")
     printer.feed(1)
-    printer.print("https://aidanlemay.com/ responded with a code of " + str(com))
+    printer.print(com)
     printer.feed(1)
-    printer.print("https://k5doc.tech/ responded with a code of " + str(tech))
+    printer.print(tech)
     printer.feed(1)
     printer.print("###############################")
     printer.feed(2)
