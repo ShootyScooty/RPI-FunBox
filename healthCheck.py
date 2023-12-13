@@ -61,7 +61,7 @@ def get_service_status(host, username, service_name):
             return "Error - Service Not Found"
 
     except Exception as e:
-        return "Error - " + e
+        return "Error - " + str(e)
     finally:
         # Close the SSH connection
         if ssh:
