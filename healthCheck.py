@@ -1,5 +1,5 @@
 import paramiko
-import systemd
+import cysystemd
 
 def get_service_status(host, username, service_name):
     try:
@@ -9,12 +9,12 @@ def get_service_status(host, username, service_name):
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh.connect(host, username=username)
 
-        # Get service status using systemd
-        manager = systemd.manager.Manager()
+        # Get service status using cysystemd
+        manager = cysystemd.SystemdManager()
         service = manager.get_unit(service_name)
-        status = service.properties["ActiveState"]
-        since = service.properties["ActiveEnterTimestampMonotonic"]
-        uptime = service.properties["ActiveEnterTimestampMonotonic"]
+        status = service.load_state()
+        since = service.load_start_timestamp()
+        uptime = service.load_start_time()
 
         # Print the results
         print(f"Service: {service_name}")
@@ -35,14 +35,3 @@ if __name__ == "__main__":
     service_name = "MC-Emergency-Bot.service"
 
     get_service_status(host, username, service_name)
-
-# import subprocess
-
-# out = str(subprocess.check_output(['cat', 'botHealth.py', '|', 'ssh', 'aidan@192.168.1.31', 'python', '-']))
-
-# print(out)
-
-# mcBot = out.split("\n     ")
-
-# for x in mcBot:
-#     print(x)
