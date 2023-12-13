@@ -19,7 +19,7 @@ def printNews():
 
     print(news['status'])
 
-    if news['status'] != "ok":
+    if news['status'] == "ok":
     
         printer.print("###############################")
         printer.print(center_text(" _   _                         "))
