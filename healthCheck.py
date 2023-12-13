@@ -1,5 +1,5 @@
 import paramiko
-from cysystemd import journal
+import subprocess
 
 def get_service_status(host, username, service_name):
     try:
@@ -9,26 +9,26 @@ def get_service_status(host, username, service_name):
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh.connect(host, username=username)
 
-        # Get service status using cysystemd
-        with journal.Reader() as reader:
-            reader.add_match(_SYSTEMD_UNIT=service_name)
-            reader.seek_tail()
+        # Run journalctl command to get service status
+        command = f"journalctl -u {service_name} -n 1 --output=json"
+        stdin, stdout, stderr = ssh.exec_command(command)
 
-            # Retrieve the last entry for the specified service
-            entry = reader.get_previous()
-            
-            if entry:
-                status = entry.get('MESSAGE')
-                since = entry.get('__REALTIME_TIMESTAMP')
-                uptime = entry.get('__MONOTONIC_TIMESTAMP')
+        # Parse the JSON output
+        output = stdout.read().decode("utf-8")
+        entries = [entry for entry in output.strip().split("\n") if entry.strip()]
+        if entries:
+            entry = entries[0]
+            status = entry.get("MESSAGE")
+            since = entry.get("__REALTIME_TIMESTAMP")
+            uptime = entry.get("__MONOTONIC_TIMESTAMP")
 
-                # Print the results
-                print(f"Service: {service_name}")
-                print(f"Status: {status}")
-                print(f"Since: {since}")
-                print(f"Uptime: {uptime}")
-            else:
-                print(f"No journal entry found for service {service_name}")
+            # Print the results
+            print(f"Service: {service_name}")
+            print(f"Status: {status}")
+            print(f"Since: {since}")
+            print(f"Uptime: {uptime}")
+        else:
+            print(f"No journal entry found for service {service_name}")
 
     except Exception as e:
         print(f"Error: {e}")
