@@ -21,7 +21,7 @@ def get_service_status(host, username, service_name):
             entry = entries[0]
             status = entry.get("MESSAGE")
             since = strftime('%Y-%m-%d %H:%M:%S', localtime(int(entry.get("__REALTIME_TIMESTAMP"))))
-            uptime = strftime('%Y-%m-%d %H:%M:%S', localtime(int(entry.get("__MONOTONIC_TIMESTAMP"))))
+            uptime = strftime('%Y-%m-%d %H:%M:%S', localtime((int(entry.get("__REALTIME_TIMESTAMP")) - int(entry.get("__MONOTONIC_TIMESTAMP")))))
 
             # Print the results
             print(f"Service: {service_name}")
