@@ -51,3 +51,27 @@ Create key.py in the root project directory with the following:
     NEWS_API_KEY = "<Your API Key from newsapi>"
     NINJA_API_KEY = "<Your API Key from api-ninjas>"
 ```
+
+#### SystemD Service Setup
+Create the following in `/etc/systemd/system/buttons.service
+```bash
+[Unit]
+Description=Button Box Listener
+After=network.target
+StartLimitIntervalSec=5
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=buttonbox
+ExecStart=/home/buttonbox/.venv/bin/python3 /home/buttonbox/RPI-FunBox/buttonPolling.py
+WorkingDirectory=/home/buttonbox/RPI-Funbox
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Start with `sudo systemctl enable --now buttons`
+
+See logs with `sudo journalctl -feu buttons`
