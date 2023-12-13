@@ -30,4 +30,4 @@ For all future instructions, prepend `install` with either `sudo pip3` or `pytho
 
 Get an API key from here - https://openweathermap.org/appid
 
-Create key.py in the root project directory with the following: `API_KEY = "<Your API Key from openweathermap>"
+Create key.py in the root project directory with the following: `API_KEY = "<Your API Key from openweathermap>"`
