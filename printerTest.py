@@ -1,10 +1,7 @@
-import serial
-import adafruit_thermal_printer
-uart = serial.Serial("/dev/serial0", baudrate=19200, timeout=3000)
-ThermalPrinter = adafruit_thermal_printer.get_printer_class(2.16)
-printer = ThermalPrinter(uart)
+from healthCheck import *
 
-# printer.test_page()
-# printer.feed(20)
-printer.print("Test BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB")
-printer.feed(20)
+trhost = "192.168.1.61"
+trusername = "aidan"
+trservice_name = "trunk-recorder"
+
+print(get_service_status(trhost, trusername, trservice_name))
