@@ -46,7 +46,7 @@ def weatherPrint():
 		printer.feed(1)
 		printer.print("Today in " + name + "\nthere will be a high of " + str(max) + "\nand a low of " + str(min) + ".\n Currently it's " + str(cur) + "\nbut feels like " + str(feel))
 		printer.feed(1)
-		printer.print("The humidity is " + str(weather['main']['humidity']) + ",\n the pressure is " + str(weather['main']['pressure']) + ",\n the visibility is " + weather['main']['visibility'] + "meters ,\n and the wind speed will be " + weather['wind']['speed'] + "mph.")
+		printer.print("The humidity is " + str(weather['main']['humidity']) + ",\n the pressure is " + str(weather['main']['pressure']) + ",\n the visibility is " + weather['visibility'] + "meters ,\n and the wind speed will be " + weather['wind']['speed'] + "mph.")
 		printer.feed(1)
 		printer.print("You can expect " + weather['weather'][0]['main'] + ",\nspecifically " + weather['weather'][0]['description'])
 		
