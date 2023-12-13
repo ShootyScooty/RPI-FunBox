@@ -1,5 +1,6 @@
 import paramiko
 import json
+from time import strftime, localtime
 
 def get_service_status(host, username, service_name):
     try:
@@ -19,8 +20,8 @@ def get_service_status(host, username, service_name):
         if entries:
             entry = entries[0]
             status = entry.get("MESSAGE")
-            since = entry.get("__REALTIME_TIMESTAMP")
-            uptime = entry.get("__MONOTONIC_TIMESTAMP")
+            since = strftime('%Y-%m-%d %H:%M:%S', localtime(entry.get("__REALTIME_TIMESTAMP")))
+            uptime = strftime('%Y-%m-%d %H:%M:%S', localtime(entry.get("__MONOTONIC_TIMESTAMP")))
 
             # Print the results
             print(f"Service: {service_name}")
