@@ -13,35 +13,59 @@ def weatherPrint():
 
 	current_time = datetime.datetime.now()
 
-	base_url = "http://api.openweathermap.org/data/2.5/weather?"
-	complete_url = base_url + "appid=" + API_KEY + "&units=imperial&q=14611" 
+	base_url = "http://api.openweathermap.org/data/2.5/weather?lat=43.144&lon=-77.6406&"
+	complete_url = base_url + "appid=" + API_KEY + "&units=imperial"
 	response = requests.get(complete_url)
 
 	weather = response.json()
 
-	if weather["cod"] != "404":
+	base_url = "http://api.openweathermap.org/data/2.5/forecast?lat=43.144&lon=-77.6406&"
+	complete_url = base_url + "appid=" + API_KEY + "&units=imperial"
+	response = requests.get(complete_url)
 
-		line0 = "###############################"
-		line1 = " _ _ _         _   _           "
-		line2 = "| | | |___ ___| |_| |_ ___ ___ "
-		line3 = "| | | | -_| .'|  _|   | -_|  _|"
-		line4 = "|_____|___|__,|_| |_|_|___|_| "
+	future = response.json()
 
-		printer.print(line0)
-		printer.print(line1)
-		printer.print(line2)
-		printer.print(line3)
-		printer.print(line4)
-		printer.print(line0)
+	if weather['cod'] != "404":
+
+		name = weather['name']
+		max = (weather['main']['temp_max'])
+		min = (weather['main']['temp_min'])
+		cur = (weather['main']['temp'])
+		feel = (weather['main']['feels_like'])
+
+		printer.print("###############################")
+		printer.print(" _ _ _         _   _           ")
+		printer.print("| | | |___ ___| |_| |_ ___ ___ ")
+		printer.print("| | | | -_| .'|  _|   | -_|  _|")
+		printer.print("|_____|___|__,|_| |_|_|___|_| ")
+		printer.print("###############################")
 
 		printer.feed(2)
 
 		printer.print("Today is " + current_time.strftime('%A') + ", " + str(current_time.month) + "/" + str(current_time.day) + "/" + str(current_time.year))
 		printer.feed(1)
-		printer.print("Today in " + weather['name'] + "\nthere will be a high of " + str(weather['main']['temp_max']) + "\nand a low of " + str(weather['main']['temp_min']) + "\nbut currently it's " + str(weather['main']['temp']) + "\nbut feels like " + str(weather['main']['feels_like']))
+		printer.print("Today in " + name + "\nthere will be a high of " + str(max) + "\nand a low of " + str(min) + ".\n Currently it's " + str(cur) + "\nbut feels like " + str(feel))
+		printer.feed(1)
+		printer.print("The humidity is " + str(weather['main']['humidity']) + ",\n the pressure is " + str(weather['main']['pressure']) + ",\n the visibility is " + weather['main']['visibility'] + "meters ,\n and the wind speed will be " + weather['wind']['speed'] + "mph.")
 		printer.feed(1)
 		printer.print("You can expect " + weather['weather'][0]['main'] + ",\nspecifically " + weather['weather'][0]['description'])
-		printer.feed(5)
+		
+		printer.feed(2)
+
+		if future['cod'] != "404":
+
+			future = future['list']
+			
+			printer.print("##########--5 Day--############")
+
+			for x in future:
+				printer.print("On " + x['dt_txt'] + "\nthere will be a high of " + str(x['main']['temp_max']) + "\nand a low of " + str(x['main']['temp_min']) + ".")
+				printer.feed(1)
+				printer.print("You can expect " + x['weather'][0]['main'] + ",\nspecifically " + x['weather'][0]['description'])
+
+			printer.print("###############################")
+		else:
+			printer.print("###############################")
 
 	else:
 		printer.print(" City Not Found ")
