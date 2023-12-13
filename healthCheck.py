@@ -1,5 +1,5 @@
 import paramiko
-import cysystemd
+from cysystemd import journal
 
 def get_service_status(host, username, service_name):
     try:
@@ -9,12 +9,13 @@ def get_service_status(host, username, service_name):
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh.connect(host, username=username)
 
-        # Get service status using cysystemd
-        manager = cysystemd.SystemdManager()
-        service = manager.get_unit(service_name)
-        status = service.load_state()
-        since = service.load_start_timestamp()
-        uptime = service.load_start_time()
+        # Get service status using cysystemd.journal
+        with journal.Reader() as reader:
+            reader.seek_unit(service_name)
+            event = reader.get_next()
+            status = event['MESSAGE']
+            since = event['__REALTIME_TIMESTAMP']
+            uptime = event['__MONOTONIC_TIMESTAMP']
 
         # Print the results
         print(f"Service: {service_name}")
