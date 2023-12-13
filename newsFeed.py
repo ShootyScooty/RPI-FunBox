@@ -36,6 +36,7 @@ def printNews():
             printer.print(article['description'])
             printer.feed(1)
             printer.print("Published " + article['publishedAt'])
+            printer.feed(2)
 
         printer.print("###############################")
         printer.feed(4)
