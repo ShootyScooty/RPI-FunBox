@@ -19,17 +19,17 @@ yellow = 22
 red = 32
 white = 36
 
-GPIO.setup(blue, GPIO.OUT)
-GPIO.setup(green, GPIO.OUT)
-GPIO.setup(yellow, GPIO.OUT)
-GPIO.setup(red, GPIO.OUT)
-GPIO.setup(white, GPIO.OUT)
+GPIO.setup(blue, GPIO.IN)
+GPIO.setup(green, GPIO.IN)
+GPIO.setup(yellow, GPIO.IN)
+GPIO.setup(red, GPIO.IN)
+GPIO.setup(white, GPIO.IN)
 
-GPIO.output(blue, 1)  
-GPIO.output(green, 1)  
-GPIO.output(yellow, 1)  
-GPIO.output(red, 1)  
-GPIO.output(white, 1)  
+GPIO.input(blue, 0)
+GPIO.input(green, 0)
+GPIO.input(yellow, 0)
+GPIO.input(red, 0)
+GPIO.input(white, 0)
 
 def pushBlue():
     print("Blue Pressed")
