@@ -12,11 +12,11 @@ yellow = 25
 red = 12
 white = 16
 
-GPIO.setup(blue, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(green, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(yellow, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(red, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(white, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(blue, GPIO.OUT)
+GPIO.setup(green, GPIO.OUT)
+GPIO.setup(yellow, GPIO.OUT)
+GPIO.setup(red, GPIO.OUT)
+GPIO.setup(white, GPIO.OUT)
 
 GPIO.add_event_detect(blue, GPIO.BOTH, callback=pushBlue,bouncetime=800)
 GPIO.add_event_detect(green, GPIO.BOTH, callback=pushGreen, bouncetime=800)
