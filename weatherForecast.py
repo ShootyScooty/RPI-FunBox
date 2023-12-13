@@ -44,11 +44,13 @@ def weatherPrint():
 
 		printer.print("Today is " + current_time.strftime('%A') + ", " + str(current_time.month) + "/" + str(current_time.day) + "/" + str(current_time.year))
 		printer.feed(1)
-		printer.print("Today in " + name + "\nthere will be a high of " + str(max) + "F\nand a low of " + str(min) + "F\n Currently it's " + str(cur) + "F\nbut feels like " + str(feel) + "F")
+		printer.print("Today in " + name + "\nthere will be a high of " + str(max) + "F\nand a low of " + str(min) + "F\n")
+		printer.feed(1)
+		printer.print("Currently it's " + str(cur) + "F\nbut feels like " + str(feel) + "F")
 		printer.feed(1)
 		printer.print("The humidity is " + str(weather['main']['humidity']) + "%,\nthe pressure is " + str(weather['main']['pressure']) + " hPa,\nthe visibility is " + str(weather['visibility']) + " meters,\nand the wind speed is " + str(weather['wind']['speed']) + " mph")
 		printer.feed(1)
-		printer.print("You can expect " + weather['weather'][0]['main'] + ",\nspecifically " + weather['weather'][0]['description'])
+		printer.print("You can expect " + weather['weather'][0]['main'] + "\nspecifically, " + weather['weather'][0]['description'])
 		
 		printer.feed(2)
 
