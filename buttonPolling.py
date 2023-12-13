@@ -18,11 +18,15 @@ GPIO.setup(yellow, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(red, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(clear, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
+print("Polling Started")
+
 try:  
     while True:
-        GPIO.wait_for_edge(blue, GPIO.FALLING)  
+        GPIO.wait_for_edge(blue, GPIO.FALLING)
+        print("Running Weather")
         weatherPrint()
 
-except KeyboardInterrupt:  
+except KeyboardInterrupt:
+    print("Shutting Down Polling")
     GPIO.cleanup()       # clean up GPIO on CTRL+C exit  
 GPIO.cleanup()           # clean up GPIO on normal exit  
