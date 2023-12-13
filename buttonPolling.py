@@ -42,11 +42,11 @@ def pushRed(red):
 def pushWhite(white):
     print("White Pressed")
 
-GPIO.add_event_detect(blue, GPIO.RISING, callback=pushBlue, bouncetime=800)
-GPIO.add_event_detect(green, GPIO.RISING, callback=pushGreen, bouncetime=800)
-GPIO.add_event_detect(yellow, GPIO.RISING, callback=pushYellow, bouncetime=800)
-GPIO.add_event_detect(red, GPIO.RISING, callback=pushRed, bouncetime=800)
-GPIO.add_event_detect(white, GPIO.RISING, callback=pushWhite, bouncetime=800)
+GPIO.add_event_detect(blue, GPIO.RISING, callback=pushBlue, bouncetime=5000)
+GPIO.add_event_detect(green, GPIO.RISING, callback=pushGreen, bouncetime=5000)
+GPIO.add_event_detect(yellow, GPIO.RISING, callback=pushYellow, bouncetime=5000)
+GPIO.add_event_detect(red, GPIO.RISING, callback=pushRed, bouncetime=5000)
+GPIO.add_event_detect(white, GPIO.RISING, callback=pushWhite, bouncetime=5000)
 
 message = input("Press Enter to Quit\n\n")
 
