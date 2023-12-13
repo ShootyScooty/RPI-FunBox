@@ -8,8 +8,8 @@ https://learn.adafruit.com/mini-thermal-receipt-printer/circuitpython
 ### Hardware Setup
 * `sudo raspi-config`
 * > Interface Options
-  > Login Shell: NO
-  > Serial Port Hardware: YES
+* > Login Shell: NO
+* > Serial Port Hardware: YES
 * Reboot
 
 ![printer-to-pi](https://github.com/aidan-lemay/RPI-FunBox/assets/34166033/3c49a892-93da-4817-ac5a-a91879448cd5)
