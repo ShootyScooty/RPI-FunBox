@@ -26,9 +26,9 @@ def printRandom():
     quotes = response.json()
 
     if response.ok: 
-        printer.print("From " + quotes['author'])
+        printer.print("From " + quotes[0]['author'])
         printer.feed(1)
-        printer.print(quotes['quote'])
+        printer.print(quotes[0]['quote'])
         printer.feed(2)
 
         printer.print("###############################")
@@ -44,7 +44,7 @@ def printRandom():
     jokes = response.json()
 
     if response.ok:
-        printer.print(jokes['joke'])
+        printer.print(jokes[0]['joke'])
         printer.feed(2)
 
         printer.print("###############################")
@@ -60,7 +60,7 @@ def printRandom():
     dadjokes = response.json()
 
     if response.ok:
-        printer.print(dadjokes['joke'])
+        printer.print(dadjokes[0]['joke'])
         printer.feed(2)
 
         printer.print("###############################")
@@ -76,7 +76,7 @@ def printRandom():
     facts = response.json()
 
     if response.ok:
-        printer.print(facts['fact'])
+        printer.print(facts[0]['fact'])
         printer.feed(2)
 
         printer.print("###############################")
@@ -92,13 +92,13 @@ def printRandom():
     riddle = response.json()
 
     if response.ok:
-        printer.print(riddle['title'])
+        printer.print(riddle[0]['title'])
         printer.feed(2)
 
-        printer.print(riddle['question'])
+        printer.print(riddle[0]['question'])
         printer.feed(2)
 
-        printer.print(riddle['answer'])
+        printer.print(riddle[0]['answer'])
         printer.feed(2)
 
         printer.print("###############################")
@@ -114,13 +114,13 @@ def printRandom():
     trivia = response.json()
 
     if response.ok:
-        printer.print("The category is " + trivia['category'])
+        printer.print("The category is " + trivia[0]['category'])
         printer.feed(2)
 
-        printer.print(trivia['question'])
+        printer.print(trivia[0]['question'])
         printer.feed(2)
 
-        printer.print(trivia['answer'])
+        printer.print(trivia[0]['answer'])
         printer.feed(2)
 
         printer.print("###############################")
