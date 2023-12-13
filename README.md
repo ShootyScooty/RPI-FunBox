@@ -8,6 +8,9 @@ https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/
 ## API Sources
 https://openweathermap.org/current
 https://openweathermap.org/forecast5
+https://www.monroecounty.gov/incidents911.rss
+https://clearcutradio.app/api/v1/calls?system=us-ny-monroe&talkgroup=1077
+https://clearcutradio.app/api/v1/calls?system=us-ny-monroe&talkgroup=1654
 
 ## For Raspberry Pi
 
@@ -31,8 +34,8 @@ https://openweathermap.org/forecast5
 
 For all future instructions, prepend `install` with either `sudo pip3` or `python3 -m pip` depending on your above choosings
 
-
 `install requests`
+`install requests_html`
 
 Get an API key from here - https://openweathermap.org/appid
 
