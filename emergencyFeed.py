@@ -8,13 +8,8 @@ uart = serial.Serial("/dev/serial0", baudrate=19200, timeout=3000)
 ThermalPrinter = adafruit_thermal_printer.get_printer_class(2.16)
 printer = ThermalPrinter(uart)
 
-
 monems = "https://clearcutradio.app/api/v1/calls?system=us-ny-monroe&talkgroup=1077"
-monfire = "https://clearcutradio.app/api/v1/calls?system=us-ny-monroe&talkgroup=1811"
 henfire = "https://clearcutradio.app/api/v1/calls?system=us-ny-monroe&talkgroup=1654"
-ritpub = "https://clearcutradio.app/api/v1/calls?system=us-ny-monroe&talkgroup=3070"
-ritamb = "https://clearcutradio.app/api/v1/calls?system=us-ny-monroe&talkgroup=1894"
-ritops = "https://clearcutradio.app/api/v1/calls?system=very-bad&talkgroup=100"
 
 # ------------------ ClearCut Functions ------------------
 
@@ -45,7 +40,17 @@ def get_source():
 def printEmergency():
     response = get_source()
 
-    message = "Monroe County 911 Events:\n\n"
+    printer.print("###############################")
+    printer.print("  ___  __ __ ")
+    printer.print(" / _ \/_ /_ |")
+    printer.print("| (_) || || |")
+    printer.print(" \__, || || |")
+    printer.print("   / / | || |")
+    printer.print("  /_/  |_||_|")
+    printer.print("###############################")
+
+    printer.print("Monroe County 911 Events:")
+    printer.feed(1)
 
     with response as r:
         items = r.html.find("item", first=False)
@@ -59,17 +64,13 @@ def printEmergency():
 
                 pubdate = item.find('pubDate', first=True).text
 
-                message += str(title + " | " + description + " | " + pubdate + "\n")
-
-    # n = 1994 # chunk length
-    # chunks = [out[i:i+n] for i in range(0, len(out), n)]
-
-    # for c in chunks:
-    #     printer.print(c)
-    #     printer.feed(1)
+                printer.print(str(title + " | " + description + " | " + pubdate))
+                printer.feed(1)
 
     response = get_source_clearcut(monems)
-    message += "\nRIT EMS Call Transcripts:\n\n"
+
+    printer.print("\nRIT EMS Call Transcripts:")
+    printer.feed(1)
 
     for data in response:
         if (data is not None and data['transcript'] is not None and data['transcript']['text'] is not None):
@@ -78,10 +79,13 @@ def printEmergency():
 
             # Get all calls within num range with matching keywords
             if ("RIT" in text or "6359" in text or "6-3-5-9" in text or "Defib 63" in text or "DEFIB 63" in text or "defib 63" in text):
-                message += str(timestamp) + " | " + text + "\n\n"
+                printer.print(str(timestamp) + " | " + text)
+                printer.feed(1)
 
     response = get_source_clearcut(henfire)
-    message += "\n\nRIT Fire Related Call Transcripts:\n\n"
+
+    printer.print("\n\nRIT Fire Related Call Transcripts:\n\n")
+    printer.feed(1)
 
     for data in response:
         if (data is not None and data['transcript'] is not None and data['transcript']['text'] is not None):
@@ -90,7 +94,8 @@ def printEmergency():
 
             # Get all calls within num range with matching keywords
             if ("RIT" in text):
-                message += str(timestamp) + " | " + text + "\n\n"
+               printer.print(str(timestamp) + " | " + text)
+               printer.feed(1)
 
-    printer.print(message)
+    printer.print("###############################")
     printer.feed(2)
