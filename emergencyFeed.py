@@ -1,8 +1,9 @@
-from datetime import datetime, timedelta
-from requests_html import HTMLSession
 import requests, json
 import serial
 import adafruit_thermal_printer
+from datetime import datetime, timedelta
+from requests_html import HTMLSession
+from printerTools import *
 
 uart = serial.Serial("/dev/serial0", baudrate=19200, timeout=3000)
 ThermalPrinter = adafruit_thermal_printer.get_printer_class(2.16)
@@ -41,15 +42,20 @@ def printEmergency():
     response = get_source()
 
     printer.print("###############################")
-    printer.JUSTIFY_CENTER
-    printer.print("  ___  __ __ ")
-    printer.print(" / _ \/_ /_ |")
-    printer.print("| (_) || || |")
-    printer.print(" \__, || || |")
-    printer.print("   / / | || |")
-    printer.print("  /_/  |_||_|")
-    printer.JUSTIFY_LEFT
+    printer.print(center_text("  ___    __   __ "))
+    printer.print(center_text(" / _ \  /_ | /_ |"))
+    printer.print(center_text("| (_) |  | |  | |"))
+    printer.print(center_text(" \__, |  | |  | |"))
+    printer.print(center_text("   / /   | |  | |"))
+    printer.print(center_text("  /_/    |_|  |_|"))
     printer.print("###############################")
+
+    # printer.print(center_text("  ___  __ __ "))
+    # printer.print(center_text(" / _ \/_ /_ |"))
+    # printer.print(center_text("| (_) || || |"))
+    # printer.print(center_text(" \__, || || |"))
+    # printer.print(center_text("   / / | || |"))
+    # printer.print(center_text("  /_/  |_||_|"))
 
     printer.print("Monroe County 911 Events:")
     printer.feed(1)

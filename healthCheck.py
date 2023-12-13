@@ -1,11 +1,12 @@
 import paramiko
 import json
 import pytz
-from datetime import datetime
 import requests, json
 import serial
 import adafruit_thermal_printer
 import datetime
+from datetime import datetime
+from printerTools import *
 
 def convert_timestamp_since(timestamp):
     if timestamp:
@@ -83,14 +84,12 @@ def healthPrint():
     trunkRecorder = get_service_status(trhost, trusername, trservice_name)
 
     printer.print("###############################")
-    printer.JUSTIFY_CENTER
-    printer.print("  _____ _        _       ")
-    printer.print(" / ____| |      | |      ")
-    printer.print("| (___ | |_ __ _| |_ ___ ")
-    printer.print(" \___ \| __/ _` | __/ __|")
-    printer.print(" ____) | || (_| | |_\__ \\")
-    printer.print("|_____/ \__\__,_|\__|___/")
-    printer.JUSTIFY_LEFT
+    printer.print(center_text("  _____ _        _       "))
+    printer.print(center_text(" / ____| |      | |      "))
+    printer.print(center_text("| (___ | |_ __ _| |_ ___ "))
+    printer.print(center_text(" \___ \| __/ _` | __/ __|"))
+    printer.print(center_text(" ____) | || (_| | |_\__ \\"))
+    printer.print(center_text("|_____/ \__\__,_|\__|___/"))
     printer.print("###############################")
 
     printer.feed(2)

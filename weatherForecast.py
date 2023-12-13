@@ -1,9 +1,9 @@
-# import required modules
 import requests, json
 import serial
 import adafruit_thermal_printer
 import datetime
 from keys import *
+from printerTools import *
 
 def weatherPrint():
 
@@ -34,12 +34,10 @@ def weatherPrint():
 		feel = (weather['main']['feels_like'])
 
 		printer.print("###############################")
-		printer.JUSTIFY_CENTER
-		printer.print(" _ _ _         _   _           ")
-		printer.print("| | | |___ ___| |_| |_ ___ ___ ")
-		printer.print("| | | | -_| .'|  _|   | -_|  _|")
-		printer.print("|_____|___|__,|_| |_|_|___|_| ")
-		printer.JUSTIFY_LEFT
+		printer.print(center_text(" _ _ _         _   _           "))
+		printer.print(center_text("| | | |___ ___| |_| |_ ___ ___ "))
+		printer.print(center_text("| | | | -_| .'|  _|   | -_|  _|"))
+		printer.print(center_text("|_____|___|__,|_| |_|_|___|_| "))
 		printer.print("###############################")
 
 		printer.feed(2)

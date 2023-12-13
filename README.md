@@ -4,6 +4,7 @@
 https://github.com/adafruit/Python-Thermal-Printer
 https://learn.adafruit.com/mini-thermal-receipt-printer/circuitpython
 https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/
+https://patorjk.com/software/taag/#p=display&h=0&v=0&f=Big (Using font "Big", character width "Full" or "Smush(R)" depending on space)
 
 ## API Sources
 https://openweathermap.org/current
