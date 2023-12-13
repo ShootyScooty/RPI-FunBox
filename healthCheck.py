@@ -4,4 +4,5 @@ out = str(subprocess.check_output(['systemctl', '--host', 'aidan@192.168.1.31', 
 
 mcBot = out.split("\n")
 
-print(mcBot)
+for x in mcBot:
+    print(x)
