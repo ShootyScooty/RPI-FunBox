@@ -1,6 +1,3 @@
-#!/usr/bin/env python2.7  
-# script by Alex Eames http://RasPi.tv/  
-# http://raspi.tv/2013/how-to-use-interrupts-with-python-on-the-raspberry-pi-and-rpi-gpio  
 import RPi.GPIO as GPIO
 from weatherForecast import *
 GPIO.setwarnings(False)
@@ -28,7 +25,8 @@ GPIO.setup(red, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(white, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 def pushBlue(blue):
-    print("Blue Pressed")
+    print("Running Weather")
+    weatherPrint()
 
 def pushGreen(green):
     print("Green Pressed")
@@ -49,5 +47,7 @@ GPIO.add_event_detect(red, GPIO.RISING, callback=pushRed, bouncetime=800)
 GPIO.add_event_detect(white, GPIO.RISING, callback=pushWhite, bouncetime=800)
 
 message = input("Press Enter to Quit\n\n")
+
+print("Cleaning Up and Quitting")
 
 GPIO.cleanup()
