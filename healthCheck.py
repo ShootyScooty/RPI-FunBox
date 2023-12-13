@@ -37,7 +37,7 @@ def get_service_status(host, username, service_name):
 
         # Run journalctl command to get service status
         command = f"journalctl -u {service_name} -n 1 --output=json"
-        stdout = ssh.exec_command(command)
+        stdin, stdout, stderr = ssh.exec_command(command)
 
         # Parse the JSON output
         output = stdout.read().decode("utf-8")
