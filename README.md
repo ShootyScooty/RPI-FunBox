@@ -31,8 +31,8 @@ https://api-ninjas.com
 ### Software Setup
 `sudo pip3 install adafruit-circuitpython-thermal-printer`
 - OR -
-`python3 -m venv .venv`
-`source .venv/bin/activate`
+`python3 -m venv venv`
+`source venv/bin/activate`
 `python3 -m pip install adafruit-circuitpython-thermal-printer`
 
 For all future instructions, prepend `install` with either `sudo pip3` or `python3 -m pip` depending on your above choosings
@@ -65,8 +65,8 @@ Type=simple
 Restart=always
 RestartSec=1
 User=buttonbox
-ExecStart=/home/buttonbox/.venv/bin/python3 /home/buttonbox/RPI-FunBox/buttonPolling.py
-WorkingDirectory=/home/buttonbox/RPI-Funbox
+ExecStart=/home/buttonbox/venv/bin/python3 /home/buttonbox/RPI-FunBox/buttonPolling.py
+WorkingDirectory=/home/buttonbox/RPI-FunBox
 
 [Install]
 WantedBy=multi-user.target
