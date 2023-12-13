@@ -13,6 +13,7 @@ https://www.monroecounty.gov/incidents911.rss
 https://clearcutradio.app/api/v1/calls?system=us-ny-monroe&talkgroup=1077
 https://clearcutradio.app/api/v1/calls?system=us-ny-monroe&talkgroup=1654
 https://newsapi.org/docs
+https://api-ninjas.com
 
 ## For Raspberry Pi
 
@@ -44,4 +45,9 @@ For all future instructions, prepend `install` with either `sudo pip3` or `pytho
 
 Get an API key from here - https://openweathermap.org/appid
 
-Create key.py in the root project directory with the following: `API_KEY = "<Your API Key from openweathermap>"`
+Create key.py in the root project directory with the following: 
+```python
+    WEATHER_API_KEY = "<Your API Key from openweathermap>"
+    NEWS_API_KEY = "<Your API Key from newsapi>"
+    NINJA_API_KEY = "<Your API Key from api-ninjas>"
+```

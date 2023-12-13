@@ -12,12 +12,7 @@ def printNews():
     base_url = "https://newsapi.org/v2/top-headlines?country=us&pageSize=5&"
     complete_url = base_url + "apiKey=" + NEWS_API_KEY
     response = requests.get(complete_url)
-
-    print (complete_url)
-
     news = response.json()
-
-    print(news['status'])
 
     if news['status'] == "ok":
     

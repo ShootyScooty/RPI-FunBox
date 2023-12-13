@@ -3,6 +3,7 @@ from weatherForecast import *
 from emergencyFeed import *
 from healthCheck import *
 from newsFeed import *
+from randomGet import *
 from printerTest import *
 GPIO.setwarnings(False)
 
@@ -50,8 +51,8 @@ def pushRed(red):
 
 def pushWhite(white):
     if GPIO.input(white) == GPIO.HIGH:
-        print("White Pressed")
-        printTest()
+        print("Running Random")
+        printRandom()
 
 GPIO.add_event_detect(blue, GPIO.RISING, callback=pushBlue, bouncetime=200)
 GPIO.add_event_detect(green, GPIO.RISING, callback=pushGreen, bouncetime=200)
