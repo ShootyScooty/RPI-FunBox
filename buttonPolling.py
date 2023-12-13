@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 from weatherForecast import *
 from emergencyFeed import *
+from healthCheck import *
 GPIO.setwarnings(False)
 
 # GPIO Broadcom Pin Assignment Number
@@ -30,7 +31,8 @@ def pushBlue(blue):
     weatherPrint()
 
 def pushGreen(green):
-    print("Green Pressed")
+    print("Running Stats")
+    healthPrint()
 
 def pushYellow(yellow):
     print("Yellow Pressed")
