@@ -5,12 +5,19 @@ import RPi.GPIO as GPIO
 from weatherForecast import *
 GPIO.setmode(GPIO.BOARD)
 
-# Pin 23: Blue Button
-blue = 23
-green = 24
-yellow = 25
-red = 12
-white = 16
+# GPIO Pin Assignment Number
+# blue = 23
+# green = 24
+# yellow = 25
+# red = 12
+# white = 16
+
+# PI Actual Pin Number
+blue = 16
+green = 18
+yellow = 22
+red = 32
+white = 36
 
 GPIO.setup(blue, GPIO.OUT)
 GPIO.setup(green, GPIO.OUT)
