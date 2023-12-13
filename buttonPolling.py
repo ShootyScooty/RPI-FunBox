@@ -2,6 +2,7 @@ import RPi.GPIO as GPIO
 from weatherForecast import *
 from emergencyFeed import *
 from healthCheck import *
+from printerTest import *
 GPIO.setwarnings(False)
 
 # GPIO Broadcom Pin Assignment Number
@@ -27,22 +28,28 @@ GPIO.setup(red, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(white, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 def pushBlue(blue):
-    print("Running Weather")
-    weatherPrint()
+    if GPIO.input(blue) == GPIO.HIGH:
+        print("Running Weather")
+        weatherPrint()
 
 def pushGreen(green):
-    print("Running Stats")
-    healthPrint()
+    if GPIO.input(green) == GPIO.HIGH:
+        print("Running Stats")
+        healthPrint()
 
 def pushYellow(yellow):
-    print("Yellow Pressed")
+    if GPIO.input(yellow) == GPIO.HIGH:
+        print("Yellow Pressed")
 
 def pushRed(red):
-    print("Running Emergency")
-    printEmergency()
+    if GPIO.input(red) == GPIO.HIGH:
+        print("Running Emergency")
+        printEmergency()
 
 def pushWhite(white):
-    print("White Pressed")
+    if GPIO.input(white) == GPIO.HIGH:
+        print("White Pressed")
+        printTest()
 
 GPIO.add_event_detect(blue, GPIO.RISING, callback=pushBlue, bouncetime=200)
 GPIO.add_event_detect(green, GPIO.RISING, callback=pushGreen, bouncetime=200)
