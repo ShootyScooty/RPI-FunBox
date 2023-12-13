@@ -25,8 +25,8 @@ def get_service_status(host, username, service_name):
         if entries:
             entry = entries[0]
             status = entry.get("MESSAGE")
-            since = convert_timestamp(entry.get("__REALTIME_TIMESTAMP"))
-            uptime = convert_timestamp(entry.get("__MONOTONIC_TIMESTAMP"))
+            since = convert_timestamp(int(entry.get("__REALTIME_TIMESTAMP")))
+            uptime = convert_timestamp(int(entry.get("__MONOTONIC_TIMESTAMP")))
 
             # Print the results
             print(f"Service: {service_name}")
