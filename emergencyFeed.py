@@ -41,12 +41,14 @@ def printEmergency():
     response = get_source()
 
     printer.print("###############################")
+    printer.JUSTIFY_CENTER
     printer.print("  ___  __ __ ")
     printer.print(" / _ \/_ /_ |")
     printer.print("| (_) || || |")
     printer.print(" \__, || || |")
     printer.print("   / / | || |")
     printer.print("  /_/  |_||_|")
+    printer.JUSTIFY_LEFT
     printer.print("###############################")
 
     printer.print("Monroe County 911 Events:")
