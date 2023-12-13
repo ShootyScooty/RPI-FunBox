@@ -44,28 +44,30 @@ def weatherPrint():
 
 		printer.print("Today is " + current_time.strftime('%A') + ", " + str(current_time.month) + "/" + str(current_time.day) + "/" + str(current_time.year))
 		printer.feed(1)
-		printer.print("Today in " + name + "\nthere will be a high of " + str(max) + '°' + "F\nand a low of " + str(min) + '°' + "F\n Currently it's " + str(cur) + '°' + "F\nbut feels like " + str(feel) + '°' + "F")
+		printer.print("Today in " + name + "\nthere will be a high of " + str(max) + "F\nand a low of " + str(min) + "F\n Currently it's " + str(cur) + "F\nbut feels like " + str(feel) + "F")
 		printer.feed(1)
-		printer.print("The humidity is " + str(weather['main']['humidity']) + "%,\n the pressure is " + str(weather['main']['pressure']) + "hPa,\n the visibility is " + str(weather['visibility']) + "meters ,\n and the wind speed will be " + str(weather['wind']['speed']) + "mph.")
+		printer.print("The humidity is " + str(weather['main']['humidity']) + "%,\nthe pressure is " + str(weather['main']['pressure']) + " hPa,\nthe visibility is " + str(weather['visibility']) + " meters,\nand the wind speed is " + str(weather['wind']['speed']) + " mph")
 		printer.feed(1)
 		printer.print("You can expect " + weather['weather'][0]['main'] + ",\nspecifically " + weather['weather'][0]['description'])
 		
 		printer.feed(2)
 
-		if future['cod'] != "404":
+		# if future['cod'] != "404":
 
-			future = future['list']
+		# 	future = future['list']
 			
-			printer.print("##########--5 Day--############")
+		# 	printer.print("##########--5 Day--############")
 
-			for x in future:
-				printer.print("On " + x['dt_txt'] + "\nthere will be a high of " + str(x['main']['temp_max']) + '°' + "F\nand a low of " + str(x['main']['temp_min']) + '°' + "F")
-				printer.feed(1)
-				printer.print("You can expect " + x['weather'][0]['main'] + ",\nspecifically " + x['weather'][0]['description'])
+		# 	for x in future:
+		# 		printer.print("On " + x['dt_txt'] + "\nthere will be a high of " + str(x['main']['temp_max']) + "F\nand a low of " + str(x['main']['temp_min']) + "F")
+		# 		printer.feed(1)
+		# 		printer.print("You can expect " + x['weather'][0]['main'] + ",\nspecifically " + x['weather'][0]['description'])
 
-			printer.print("###############################")
-		else:
-			printer.print("###############################")
+		# 	printer.print("###############################")
+		# else:
+		# 	printer.print("###############################")
+
+		printer.print("###############################")
 
 	else:
 		printer.print(" City Not Found ")
