@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 def convert_timestamp(timestamp):
     if timestamp:
-        return datetime.fromtimestamp(timestamp / 1e6).strftime("%Y-%m-%d %H:%M:%S")
+        return datetime.utcfromtimestamp(timestamp / 1e6).strftime("%Y-%m-%d %H:%M:%S UTC")
     return "N/A"
 
 def get_service_status(host, username, service_name):
