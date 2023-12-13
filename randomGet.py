@@ -26,6 +26,7 @@ def printRandom():
     quotes = response.json()
 
     if response.ok: 
+        printer.print(center_text("Quotes"))
         printer.print("From " + quotes[0]['author'])
         printer.feed(1)
         printer.print(quotes[0]['quote'])
@@ -44,6 +45,7 @@ def printRandom():
     jokes = response.json()
 
     if response.ok:
+        printer.print(center_text("Jokes"))
         printer.print(jokes[0]['joke'])
         printer.feed(2)
 
@@ -60,6 +62,7 @@ def printRandom():
     dadjokes = response.json()
 
     if response.ok:
+        printer.print(center_text("Dad Jokes"))
         printer.print(dadjokes[0]['joke'])
         printer.feed(2)
 
@@ -76,6 +79,7 @@ def printRandom():
     facts = response.json()
 
     if response.ok:
+        printer.print(center_text("Facts"))
         printer.print(facts[0]['fact'])
         printer.feed(2)
 
@@ -92,13 +96,11 @@ def printRandom():
     riddle = response.json()
 
     if response.ok:
+        printer.print(center_text("Riddles"))
         printer.print(riddle[0]['title'])
         printer.feed(2)
 
         printer.print(riddle[0]['question'])
-        printer.feed(2)
-
-        printer.print(riddle[0]['answer'])
         printer.feed(2)
 
         printer.print("###############################")
@@ -114,6 +116,7 @@ def printRandom():
     trivia = response.json()
 
     if response.ok:
+        printer.print(center_text("Trivia"))
         printer.print("The category is " + trivia[0]['category'])
         printer.feed(2)
 
@@ -129,6 +132,9 @@ def printRandom():
     else:
         printer.print("Error fetching API")
         printer.feed(2)
+
+    printer.print("The answer to todays riddle was: " + riddle[0]['answer'])
+    printer.feed(2)
 
     printer.print("###############################")
     printer.feed(4)
