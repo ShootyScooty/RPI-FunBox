@@ -10,6 +10,7 @@ def weatherPrint():
 	uart = serial.Serial("/dev/serial0", baudrate=19200, timeout=3000)
 	ThermalPrinter = adafruit_thermal_printer.get_printer_class(2.16)
 	printer = ThermalPrinter(uart)
+	printer.setTimes(40000, 2500)
 
 	current_time = datetime.datetime.now()
 
@@ -44,9 +45,9 @@ def weatherPrint():
 
 		printer.print("Today is " + current_time.strftime('%A') + ", " + str(current_time.month) + "/" + str(current_time.day) + "/" + str(current_time.year))
 		printer.feed(1)
-		printer.print("Today in " + name + "\nthere will be a high of " + str(max) + '\u00b0' + "F\nand a low of " + str(min) + '\u00b0' + "F\n Currently it's " + str(cur) + '\u00b0' + "F\nbut feels like " + str(feel) + '\u00b0' + "F")
+		printer.print("Today in " + name + "\nthere will be a high of " + str(max) + '°' + "F\nand a low of " + str(min) + '°' + "F\n Currently it's " + str(cur) + '°' + "F\nbut feels like " + str(feel) + '°' + "F")
 		printer.feed(1)
-		printer.print("The humidity is " + str(weather['main']['humidity']) + "%,\n the pressure is " + str(weather['main']['pressure']) + "hPa,\n the visibility is " + weather['visibility'] + "meters ,\n and the wind speed will be " + weather['wind']['speed'] + "mph.")
+		printer.print("The humidity is " + str(weather['main']['humidity']) + "%,\n the pressure is " + str(weather['main']['pressure']) + "hPa,\n the visibility is " + str(weather['visibility']) + "meters ,\n and the wind speed will be " + str(weather['wind']['speed']) + "mph.")
 		printer.feed(1)
 		printer.print("You can expect " + weather['weather'][0]['main'] + ",\nspecifically " + weather['weather'][0]['description'])
 		
@@ -59,7 +60,7 @@ def weatherPrint():
 			printer.print("##########--5 Day--############")
 
 			for x in future:
-				printer.print("On " + x['dt_txt'] + "\nthere will be a high of " + str(x['main']['temp_max']) + '\u00b0' + "F\nand a low of " + str(x['main']['temp_min']) + '\u00b0' + "F")
+				printer.print("On " + x['dt_txt'] + "\nthere will be a high of " + str(x['main']['temp_max']) + '°' + "F\nand a low of " + str(x['main']['temp_min']) + '°' + "F")
 				printer.feed(1)
 				printer.print("You can expect " + x['weather'][0]['main'] + ",\nspecifically " + x['weather'][0]['description'])
 
