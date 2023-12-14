@@ -82,26 +82,33 @@ def healthPrint():
     mcEmergency = get_service_status(mchost, mcusername, mcservice_name)
     trunkRecorder = get_service_status(trhost, trusername, trservice_name)
 
-    url = "https://k5doc.tech/"
-    com = ""
-    tech = ""
+    com = "https://aidanlemay.com/"
+    tech = "https://k5doc.tech/"
 
     chrome_options = Options()
     chrome_options.add_argument("--headless")  # Run in headless mode (without opening a browser window)
     chrome_options.add_argument("--disable-gpu")  # Disable GPU acceleration to avoid issues in headless mode
     chrome_options.add_argument("--no-sandbox")  # Disable sandboxing for headless mode on Linux
 
-    # Adjust the path to the chromedriver executable
-    driver = webdriver.Chrome(executable_path="/usr/bin/chromedriver", options=chrome_options)
+    # Specify the path to chromedriver
+    chromedriver_path = "/usr/bin/chromedriver"
 
+    chrome_options.binary_location = "/usr/bin/chromium-browser"
+
+    # Use the ChromeOptions object when initializing the Chrome driver
+    driver = webdriver.Chrome(options=chrome_options, executable_path=chromedriver_path)
 
     try:
-        com = "https://aidanlemay.com/ responded with a code of " + str(urllib.request.urlopen("https://aidanlemay.com/").getcode())
-    except Exception:
+        driver.get(com)
+        status_code = driver.execute_script("return window.location.href")  # Execute JavaScript to get the current URL
+        com = "https://aidanlemay.com/ responded with a code of " + str(status_code)
+    except TimeoutException:
         com = "Unable to reach https://aidanlemay.com/"
+    finally:
+        driver.quit()
 
     try:
-        driver.get(url)
+        driver.get(tech)
         status_code = driver.execute_script("return window.location.href")  # Execute JavaScript to get the current URL
         tech = "https://k5doc.tech/ responded with a code of " + str(status_code)
     except TimeoutException:
