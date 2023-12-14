@@ -94,4 +94,6 @@ Start with `sudo systemctl start buttons`
 
 Get job status with `sudo systemctl status buttons`
 
+Restart the service after making changes to the file with `systemd daemon-reload`
+
 See logs with `sudo journalctl -feu buttons`
