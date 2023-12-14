@@ -96,7 +96,8 @@ def healthPrint():
     chrome_options.binary_location = "/usr/bin/chromium-browser"
 
     # Use the ChromeOptions object when initializing the Chrome driver
-    driver = webdriver.Chrome(options=chrome_options, executable_path=chromedriver_path)
+    chrome_options.add_argument(f"chromedriver-binary={chromedriver_path}")
+    driver = webdriver.Chrome(options=chrome_options)
 
     try:
         driver.get(com)
