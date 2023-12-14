@@ -8,9 +8,6 @@ import datetime
 import urllib.request
 from datetime import datetime
 from printerTools import *
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.common.exceptions import TimeoutException
 
 def convert_timestamp_since(timestamp):
     if timestamp:
@@ -82,45 +79,18 @@ def healthPrint():
     mcEmergency = get_service_status(mchost, mcusername, mcservice_name)
     trunkRecorder = get_service_status(trhost, trusername, trservice_name)
 
-    com = "https://aidanlemay.com/"
-    tech = "https://k5doc.tech/"
-
-    chrome_options = Options()
-    chrome_options.add_argument("--headless")  # Run in headless mode (without opening a browser window)
-    chrome_options.add_argument("--disable-gpu")  # Disable GPU acceleration to avoid issues in headless mode
-    chrome_options.add_argument("--no-sandbox")  # Disable sandboxing for headless mode on Linux
-
-    # Specify the path to chromedriver
-    chromedriver_path = "/home/buttonbox/chromedriver"
-
-    chrome_options.binary_location = "/usr/bin/chromium"
-
-    # Use the ChromeOptions object when initializing the Chrome driver
-    chrome_options.add_argument(f"chromedriver-binary={chromedriver_path}")
-    driver = webdriver.Chrome(options=chrome_options)
+    com = ""
+    tech = ""
 
     try:
-        driver.get(com)
-        status_code = driver.execute_script("return window.location.href")  # Execute JavaScript to get the current URL
-        com = "https://aidanlemay.com/ responded with a code of " + str(status_code)
-    except TimeoutException:
+        com = "https://aidanlemay.com/ responded with a code of " + str(urllib.request.urlopen("https://aidanlemay.com/").getcode())
+    except Exception:
         com = "Unable to reach https://aidanlemay.com/"
-    finally:
-        driver.quit()
 
     try:
-        driver.get(tech)
-        status_code = driver.execute_script("return window.location.href")  # Execute JavaScript to get the current URL
-        tech = "https://k5doc.tech/ responded with a code of " + str(status_code)
-    except TimeoutException:
+        tech = "https://k5doc.tech/ responded with a code of " + str(urllib.request.urlopen("https://k5doc.tech/").getcode())
+    except Exception:
         tech = "Unable to reach https://k5doc.tech/"
-    finally:
-        driver.quit()
-
-    # try:
-    #     tech = "https://k5doc.tech/ responded with a code of " + str(urllib.request.urlopen("https://k5doc.tech/").getcode())
-    # except Exception:
-    #     tech = "Unable to reach https://k5doc.tech/"
 
     printer.print("###############################")
     printer.print(center_text("  _____ _        _       "))
