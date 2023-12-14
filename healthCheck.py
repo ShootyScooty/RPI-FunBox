@@ -8,6 +8,9 @@ import datetime
 import urllib.request
 from datetime import datetime
 from printerTools import *
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.common.exceptions import TimeoutException
 
 def convert_timestamp_since(timestamp):
     if timestamp:
@@ -79,8 +82,18 @@ def healthPrint():
     mcEmergency = get_service_status(mchost, mcusername, mcservice_name)
     trunkRecorder = get_service_status(trhost, trusername, trservice_name)
 
+    url = "https://k5doc.tech/"
     com = ""
     tech = ""
+
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")  # Run in headless mode (without opening a browser window)
+    chrome_options.add_argument("--disable-gpu")  # Disable GPU acceleration to avoid issues in headless mode
+    chrome_options.add_argument("--no-sandbox")  # Disable sandboxing for headless mode on Linux
+
+    # Adjust the path to the chromedriver executable
+    driver = webdriver.Chrome(executable_path="/usr/bin/chromedriver", options=chrome_options)
+
 
     try:
         com = "https://aidanlemay.com/ responded with a code of " + str(urllib.request.urlopen("https://aidanlemay.com/").getcode())
@@ -88,9 +101,18 @@ def healthPrint():
         com = "Unable to reach https://aidanlemay.com/"
 
     try:
-        tech = "https://k5doc.tech/ responded with a code of " + str(urllib.request.urlopen("https://k5doc.tech/").getcode())
-    except Exception:
+        driver.get(url)
+        status_code = driver.execute_script("return window.location.href")  # Execute JavaScript to get the current URL
+        tech = "https://k5doc.tech/ responded with a code of " + str(status_code)
+    except TimeoutException:
         tech = "Unable to reach https://k5doc.tech/"
+    finally:
+        driver.quit()
+
+    # try:
+    #     tech = "https://k5doc.tech/ responded with a code of " + str(urllib.request.urlopen("https://k5doc.tech/").getcode())
+    # except Exception:
+    #     tech = "Unable to reach https://k5doc.tech/"
 
     printer.print("###############################")
     printer.print(center_text("  _____ _        _       "))
