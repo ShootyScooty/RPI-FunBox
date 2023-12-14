@@ -54,11 +54,12 @@ def pushWhite(white):
         print("Running Random")
         printRandom()
 
-GPIO.add_event_detect(blue, GPIO.RISING, callback=pushBlue, bouncetime=200)
-GPIO.add_event_detect(green, GPIO.RISING, callback=pushGreen, bouncetime=200)
-GPIO.add_event_detect(yellow, GPIO.RISING, callback=pushYellow, bouncetime=200)
-GPIO.add_event_detect(red, GPIO.RISING, callback=pushRed, bouncetime=200)
-GPIO.add_event_detect(white, GPIO.RISING, callback=pushWhite, bouncetime=200)
+while True:
+    GPIO.add_event_detect(blue, GPIO.RISING, callback=pushBlue, bouncetime=200)
+    GPIO.add_event_detect(green, GPIO.RISING, callback=pushGreen, bouncetime=200)
+    GPIO.add_event_detect(yellow, GPIO.RISING, callback=pushYellow, bouncetime=200)
+    GPIO.add_event_detect(red, GPIO.RISING, callback=pushRed, bouncetime=200)
+    GPIO.add_event_detect(white, GPIO.RISING, callback=pushWhite, bouncetime=200)
 
 # message = input("Press Enter to Quit\n\n")
 
