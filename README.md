@@ -29,19 +29,21 @@ https://api-ninjas.com
 ![gpio](https://github.com/aidan-lemay/RPI-FunBox/assets/34166033/0cbffadd-883f-4266-a181-dd581589301d)
 
 ### Software Setup
-`sudo pip3 install adafruit-circuitpython-thermal-printer`
-- OR -
 `python3 -m venv venv`
+
 `source venv/bin/activate`
+
 `python3 -m pip install adafruit-circuitpython-thermal-printer`
 
-For all future instructions, prepend `install` with either `sudo pip3` or `python3 -m pip` depending on your above choosings
+`python3 -m pip install requests`
 
-`install requests`
-`install requests_html`
-`install paramiko`
-`install cysystemd`
-`install pytz`
+`python3 -m pip install requests_html`
+
+`python3 -m pip install paramiko`
+
+`python3 -m pip install cysystemd`
+
+`python3 -m pip install pytz`
 
 Get an API key from here - https://openweathermap.org/appid
 
