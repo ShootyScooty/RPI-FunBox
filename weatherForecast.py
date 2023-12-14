@@ -28,10 +28,10 @@ def weatherPrint():
 		feel = (weather['main']['feels_like'])
 
 		printer.print("###############################")
-		printer.print(center_text(" _ _ _         _   _           "))
-		printer.print(center_text("| | | |___ ___| |_| |_ ___ ___ "))
-		printer.print(center_text("| | | | -_| .'|  _|   | -_|  _|"))
-		printer.print(center_text("|_____|___|__,|_| |_|_|___|_| "))
+		printer.print(center_text(" __      __        _   _            "))
+		printer.print(center_text(" \ \    / /__ __ _| |_| |_  ___ _ _ "))
+		printer.print(center_text("  \ \/\/ / -_) _` |  _| ' \/ -_) '_|"))
+		printer.print(center_text("   \_/\_/\___\__,_|\__|_||_\___|_|  "))
 		printer.print("###############################")
 
 		printer.feed(2)

@@ -50,13 +50,6 @@ def printEmergency():
     printer.print(center_text("  /_/    |_|  |_|"))
     printer.print("###############################")
 
-    # printer.print(center_text("  ___  __ __ "))
-    # printer.print(center_text(" / _ \/_ /_ |"))
-    # printer.print(center_text("| (_) || || |"))
-    # printer.print(center_text(" \__, || || |"))
-    # printer.print(center_text("   / / | || |"))
-    # printer.print(center_text("  /_/  |_||_|"))
-
     printer.print("Monroe County 911 Events:")
     printer.feed(1)
 

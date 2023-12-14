@@ -52,12 +52,6 @@ def get_service_status(host, username, service_name):
             # out = "Service: " + service_name + "\nStatus: " + status + "\nSince: " + since + "\nUptime: " + uptime
             out = "Service: " + service_name + "\nSince: " + since + "\nUptime: " + uptime
 
-            # Print the results
-            # print(f"Service: {service_name}")
-            # print(f"Status: {status}")
-            # print(f"Since: {since}")
-            # print(f"Uptime: {uptime}")
-
             return out
         else:
             return "Error - Service Not Found"
