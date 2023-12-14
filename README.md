@@ -56,6 +56,8 @@ https://api-ninjas.com
 
 `python3 -m pip install selenium`
 
+`python3 -m pip install chromedriver-binary`
+
 `sudo apt-get install chromium-driver`
 
 Get an API key from here - https://openweathermap.org/appid
