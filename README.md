@@ -45,6 +45,10 @@ https://api-ninjas.com
 
 `python3 -m pip install pytz`
 
+`python3 -m pip install selenium`
+
+`sudo apt-get install chromium-driver`
+
 Get an API key from here - https://openweathermap.org/appid
 
 Create key.py in the root project directory with the following: 
