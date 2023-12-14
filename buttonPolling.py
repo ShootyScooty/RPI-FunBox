@@ -61,6 +61,7 @@ GPIO.add_event_detect(red, GPIO.RISING, callback=pushRed, bouncetime=200)
 GPIO.add_event_detect(white, GPIO.RISING, callback=pushWhite, bouncetime=200)
 
 # Keep the script running to handle GPIO events
+print("Waiting for Button Press")
 try:
     while True:
         pass
