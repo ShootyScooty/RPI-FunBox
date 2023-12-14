@@ -2,17 +2,26 @@
 
 ## References
 https://github.com/adafruit/Python-Thermal-Printer
+
 https://learn.adafruit.com/mini-thermal-receipt-printer/circuitpython
+
 https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/
+
 https://patorjk.com/software/taag/#p=display&h=0&v=0&f=Big (Using font "Big", character width "Full" or "Smush(R)" depending on space)
 
 ## API Sources
 https://openweathermap.org/current
+
 https://openweathermap.org/forecast5
+
 https://www.monroecounty.gov/incidents911.rss
+
 https://clearcutradio.app/api/v1/calls?system=us-ny-monroe&talkgroup=1077
+
 https://clearcutradio.app/api/v1/calls?system=us-ny-monroe&talkgroup=1654
+
 https://newsapi.org/docs
+
 https://api-ninjas.com
 
 ## For Raspberry Pi
@@ -50,6 +59,10 @@ https://api-ninjas.com
 `sudo apt-get install chromium-driver`
 
 Get an API key from here - https://openweathermap.org/appid
+
+Get an API key from here - https://newsapi.org
+
+Get an API key from here - https://api-ninjas.com
 
 Create key.py in the root project directory with the following: 
 ```python
