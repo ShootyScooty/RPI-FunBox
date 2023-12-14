@@ -91,9 +91,9 @@ def healthPrint():
     chrome_options.add_argument("--no-sandbox")  # Disable sandboxing for headless mode on Linux
 
     # Specify the path to chromedriver
-    chromedriver_path = "/usr/bin/chromedriver"
+    chromedriver_path = "/home/buttonbox/chromedriver"
 
-    chrome_options.binary_location = "/usr/bin/chromium-browser"
+    chrome_options.binary_location = "/usr/bin/chromium"
 
     # Use the ChromeOptions object when initializing the Chrome driver
     chrome_options.add_argument(f"chromedriver-binary={chromedriver_path}")
