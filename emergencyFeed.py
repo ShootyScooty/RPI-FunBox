@@ -1,7 +1,8 @@
+import time
 import requests, json
 import serial
 import adafruit_thermal_printer
-from datetime import datetime, time, timedelta
+from datetime import datetime, timedelta
 from requests_html import HTMLSession
 from printerTools import *
 
@@ -64,8 +65,6 @@ def printEmergency():
     events = 0
 
     keywords = ["RIT", "rit", "R I T", "r i t", "6359", "6 3 5 9", "6-3-5-9", "Defib 63", "DEFIB 63", "defib 63", "Defib 6-3", "DEFIB 6-3", "defib 6-3", "601", "6 0 1", "Andrews", "Andrews Memorial", "Andrews Memorial Drive", "Lomb", "Lomb Memorial", "Lomb Memorial Drive", "Lowenthall", "Perkins", "Riverknoll", "University Commons", "John", "John Street", "Wiltsie", "Greenleaf", "Greenleaf Court", "Gleason", "Reynolds", "Kimball", "Farnum", "Charters"]
-
-    
 
     response = get_source_clearcut(monems)
 
